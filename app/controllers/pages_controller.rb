@@ -7,9 +7,11 @@ class PagesController < ApplicationController
 
     
     searched = params[:search]
+
     if searched != nil
       query = searched.gsub( /\W/, '-' )
     end
+
 
     @response = RestClient::Request.execute(
       method: :get,

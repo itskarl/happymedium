@@ -4,12 +4,38 @@
     <title>Startup</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+<br>
+<ul>
+  <li class="dropdown">
+  <a class="active">Account</a>    
+  <div class="dropdown-content">
+      <a href="#">Sign Up</a>
+      <a href="#">Log in</a>
+    </div>
+    </li>
+  <li><a href="#">Plan My Nite</a></li>
+  <li><a href="#">Meeting Up</a></li>
+  <li style="float:right" >
+    <%= form_tag(root_path, method: :get) do %>
+      Keyword <%= text_field_tag :search %>
+      <%= submit_tag 'Search' %>
+    <% end %>
+  </li>
+
+</ul>
+
+
     <%= yield %>
+
+
+
+    
   </body>
 </html>
