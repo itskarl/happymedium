@@ -1,0 +1,10 @@
+<h1>Pages#home</h1>
+<%= form_tag(root_path, method: :get) do %>
+  Keyword <%= text_field_tag :search %>
+  <%= submit_tag 'Search' %>
+<% end %>
+<p><%=@loc_one%></p>
+<p>Address: <%=@address_one%></p>
+<p><%=@loc_two%></p>
+<p>Address: <%=@address_two%></p>
+<p><%=@data.first[1].count%></p>
