@@ -15,5 +15,9 @@ class PagesController < ApplicationController
       @loc_one_img = @locationTwo['image_url']
       @address_one = @locationOne['location']['display_address'][0]
       @address_two = @locationTwo['location']['display_address'][0]
+
+
+      @datae = Curl::Easy.perform("https://www.eventbriteapi.com/v3/events/search/?q=#{searched}&sort_by=best&location.address=new+york+city&token=FGTPMLNV7K6MQVZZCC6S")
+      @req = JSON.parse(@datae.body_str)
   end
 end

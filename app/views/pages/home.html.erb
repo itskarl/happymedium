@@ -8,3 +8,11 @@
 <p><%=@loc_two%></p>
 <p>Address: <%=@address_two%></p>
 <p><%=@data.first[1].count%></p>
+
+<!--
+EVENTBRITE -->
+<h2> EVENTBRITE </h2>
+<% randevent = @req['events'].sample  %>
+<p>Event: <%= randevent['name']['text'] %></p>
+<p>Description: <%= randevent['description']['text'].byteslice(0..200) %></p>
+<p>Time: <%= randevent['start']['local'] %>
