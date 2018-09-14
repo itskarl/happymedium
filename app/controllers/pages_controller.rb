@@ -1,9 +1,18 @@
 class PagesController < ApplicationController
+  
+  
+  # TODO: changed location from yelp API call to take in longitude and latitude 
+
   def home
+
+    
     searched = params[:search]
-      if searched != nil
-        query = searched.gsub(/\W/,'-')
-      end
+
+    if searched != nil
+      query = searched.gsub( /\W/, '-' )
+    end
+
+
     @response = RestClient::Request.execute(
       method: :get,
       url: "https://api.yelp.com/v3/businesses/search?term=#{query}&location=brooklyn&open_now=true",
@@ -22,5 +31,8 @@ class PagesController < ApplicationController
 
       @datae = Curl::Easy.perform("https://www.eventbriteapi.com/v3/events/search/?q=#{query}&sort_by=best&location.address=new+york+city&token=FGTPMLNV7K6MQVZZCC6S")
       @req = JSON.parse(@datae.body_str)
+
   end
+
+
 end
