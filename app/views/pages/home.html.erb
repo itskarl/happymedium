@@ -1,10 +1,12 @@
-<h1>Pages#home</h1>
+<h1>Search Places in your location</h1>
 <%= form_tag(root_path, method: :get) do %>
   Keyword <%= text_field_tag :search %>
   <%= submit_tag 'Search' %>
 <% end %>
 <p><%=@loc_one%></p>
 <p>Address: <%=@address_one%></p>
+<%=image_tag "#{@loc_one_img}", {:style => "width:500px;"}%>
 <p><%=@loc_two%></p>
 <p>Address: <%=@address_two%></p>
+<%=image_tag "#{@loc_two_img}", {:style => "width:500px;"}%>
 <p><%=@data.first[1].count%></p>
