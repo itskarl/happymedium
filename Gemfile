@@ -3,11 +3,13 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
 gem 'foursquare2', '~> 2.0', '>= 2.0.2'
-gem 'yelp', '~> 2.1', '>= 2.1.5'
+gem 'yelp', require: 'yelp'
+# gem 'yelp', '~> 2.1', '>= 2.1.5'
 gem 'google-api-client', '~> 0.23.9'
-gem 'eventbrite', '~> 0.1.0'
+gem 'eventbrite'
 gem 'bootstrap', '~> 4.0.0.alpha3'
 gem 'geocoder'
+gem 'gmaps4rails'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.1'
 # Use sqlite3 as the database for Active Record

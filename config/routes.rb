@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :locations
   resources :places, except: [:update, :edit, :destroy]
 root 'places#index'
 

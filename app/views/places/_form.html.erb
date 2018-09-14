@@ -9,13 +9,7 @@
     <%= f.text_field :visited_by, class: "form-control" %>
   </fieldset>
 
-  <fieldset class="form-group">
-    <%= f.label :address, 'Address' %>
-    <%= f.text_field :address, class: "form-control" %>
-  </fieldset>
-
-  <%= f.submit 'Add!', class: 'btn btn-primary' %>
-
+  <%# gets user name and info %>
 
 <fieldset class="form-group">
   <%= f.label :address, 'Address' %>
@@ -23,4 +17,12 @@
   <small class="text-muted">You can also enter IP. Your IP is <%= request.ip %></small>
 </fieldset>
 
+  <%# gets location when they use the app %>
+
+  <%= f.submit 'Add!', class: 'btn btn-primary' %>
+
 <% end %>
+
+<%= request.location.city %>
+
+<%# how to do this automaticaly %>
