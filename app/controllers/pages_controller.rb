@@ -12,7 +12,7 @@ class PagesController < ApplicationController
       @loc_one = @locationOne['name']
       @loc_two = @locationTwo['name']
       @loc_one_img = @locationOne['image_url']
-      @loc_one_img = @locationTwo['image_url']
+      @loc_two_img = @locationTwo['image_url']
       @address_one = @locationOne['location']['display_address'][0]
       @address_two = @locationTwo['location']['display_address'][0]
 
