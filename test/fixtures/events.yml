@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  address: MyString
+  image_url: MyString
+  start_time: 2018-09-14 16:16:23
+  end_time: 2018-09-14 16:16:23
+  itinerary: one
+
+two:
+  name: MyString
+  address: MyString
+  image_url: MyString
+  start_time: 2018-09-14 16:16:23
+  end_time: 2018-09-14 16:16:23
+  itinerary: two
