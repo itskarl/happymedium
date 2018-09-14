@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_13_203259) do
+ActiveRecord::Schema.define(version: 2018_09_14_194451) do
 
-  create_table "places", force: :cascade do |t|
-    t.string "title"
-    t.text "address"
-    t.float "latitude"
-    t.float "longitude"
-    t.string "visited_by"
+  create_table "users", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "email"
+    t.string "username"
+    t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
