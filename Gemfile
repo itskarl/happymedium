@@ -5,6 +5,8 @@ ruby '2.5.1'
 
 gem 'geo_ip'
 gem 'geocoder'
+gem 'json'
+gem 'curb'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.1'
 
