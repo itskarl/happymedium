@@ -6,6 +6,7 @@ gem 'yelp'
 gem 'rest-client'
 gem 'curb'
 gem 'json'
+gem 'jquery-rails'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.1'
@@ -74,6 +75,6 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 
-# Adding React 
+# Adding React
 gem 'react-rails', '~> 2.4', '>= 2.4.7'
 gem 'webpacker', '~> 3.5', '>= 3.5.5'
