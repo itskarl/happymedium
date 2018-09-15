@@ -10,7 +10,7 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-    <!-- THIS SCRIPT CHANGES YOUR GEOLOCATION INTO A CITY NAME  -->
+    <!-- THIS SCRIPT CHANGES YOUR GEOLOCATION INTO A CITY NAME -->
 
     <script type="text/javascript">
       var geocoder;
@@ -69,7 +69,14 @@
 
   <body onload="initialize()">
 
-    <br>
+    <div class="fullscreen-bg">
+      <video loop="loop" muted="muted" autoplay="autoplay" poster="img/videoframe.jpg" class="fullscreen-bg__video">
+        <source src="sky.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="city"></div>
+
+    <div class="content">
     <ul>
       <li class="dropdown">
         <a class="active">Account</a>
@@ -97,6 +104,6 @@
   </ul>
 
   <%= yield %>
-
+</div>
 </body>
 </html>
