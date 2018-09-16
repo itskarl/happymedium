@@ -15,7 +15,6 @@ class ItinerariesController < ApplicationController
 
   def create 
     @itinerary = Itinerary.new(itinerary_params)
-
     respond_to do |format|
       if @itinerary.save
         p "Itinerary Created!"
