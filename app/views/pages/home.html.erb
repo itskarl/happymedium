@@ -1,14 +1,27 @@
 <h1>Plan my Nite</h1>
+<div>
+  <p><%=@loc_one%></p>
+  <p>Address: <%=@address_one%></p>
+  <%=image_tag "#{@loc_one_img}", {:style => "width: 500px;"}%>
+  <%= form_for( :event, :html => { :role => "form" }, url: events_path ) do |f| %>
+    <%= f.hidden_field :name, value: @loc_one %>
+    <%= f.hidden_field :itinerary_id, value: 2 %>
+    <%= f.submit "Add" %>
+  <% end %>
+</div>
 
-<p><%=@loc_one%></p>
-<p>Address: <%=@address_one%></p>
+<div>
+  <p><%=@loc_two%></p>
+  <p>Address: <%=@address_two%></p>
+  <%=image_tag "#{@loc_two_img}", {:style => "width: 500px;"}%>
+</div>
 
-<%=image_tag "#{@loc_one_img}", {:style => "width: 500px;"}%>
-<p><%=@loc_two%></p>
-<p>Address: <%=@address_two%></p>
-<%=image_tag "#{@loc_two_img}", {:style => "width: 500px;"}%>
-
+<hr>
+<br>
 <p><%=@data.first[1].count%></p>
+<br>
+<hr>
+
 
 <!-- EVENTBRITE -->
 <h2> EVENTBRITE </h2>
@@ -23,7 +36,7 @@
 <% end %>
 
 <%= @itinerary.inspect %>
-
+<%= @event.inspect %>
 <br>
 <hr>
 <br>

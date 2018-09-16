@@ -8,9 +8,12 @@ class PagesController < ApplicationController
     # I might even transfer it to a concern later on
     fetch_api_data 
 
+    @event = Event.new
     @itinerary = Itinerary.new
     @itinerary = Itinerary.where(params[:id])
 
   end
+
+
 
 end
