@@ -4,16 +4,13 @@ class PagesController < ApplicationController
 
   def home
     
-    fetch_api_data
+    # Transferred API call to Application Controller. Still works the same but we will now have a less bulky PagesController
+    # I might even transfer it to a concern later on
+    fetch_api_data 
 
-    new_itinerary
-
+    @itinerary = Itinerary.new
     @itinerary = Itinerary.where(params[:id])
 
-  end
-
-  def new_itinerary
-    @itinerary = Itinerary.new
   end
 
 end
