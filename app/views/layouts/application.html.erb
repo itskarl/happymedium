@@ -6,12 +6,11 @@
     <%= csp_meta_tag %>
     <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
     <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
-    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBRMuPVbAo3aTx8JfUFUlwDNqTHQdkdw3I"></script>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
     <!-- THIS SCRIPT CHANGES YOUR GEOLOCATION INTO A CITY NAME -->
-
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBRMuPVbAo3aTx8JfUFUlwDNqTHQdkdw3I"></script>
     <script type="text/javascript">
       var geocoder;
       if (navigator.geolocation) {

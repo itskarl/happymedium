@@ -11,16 +11,6 @@
 // about supported directives.
 //
 //= require rails-ujs
-//= require jquery
-//= require jquery_ujs
 //= require activestorage
 //= require turbolinks
 //= require_tree .
-
-window.onload = function() {
-    if (window.jQuery) {
-        console.log('jQuery loaded successfully')
-    } else {
-        console.log('jQuery is not running')
-    }
-}
