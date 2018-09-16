@@ -1,8 +1,4 @@
 class PagesController < ApplicationController
-  
-  
-  # TODO: changed location from yelp API call to take in longitude and latitude 
-
   def home
 
     
