@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  resources :itineraries
+  resources :events
+
   resources :users
   root 'pages#home'
 
