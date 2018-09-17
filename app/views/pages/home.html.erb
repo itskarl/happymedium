@@ -5,6 +5,8 @@
   <%=image_tag "#{@loc_one_img}", {:style => "width: 500px;"}%>
   <%= form_for( :event, :html => { :role => "form" }, url: events_path ) do |f| %>
     <%= f.hidden_field :name, value: @loc_one %>
+    <%= f.hidden_field :address, value: @address_one %>
+    <%= f.hidden_field :image_url, value: @loc_one_img %>
     <%= f.submit "Add" %>
   <% end %>
 </div>
@@ -35,7 +37,7 @@
 <% end %>
 
 <%= @itinerary.inspect %>
-<%= @current_event.inspect %>
+<%= @event.inspect %>
 <br>
 <hr>
 <br>
