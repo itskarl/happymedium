@@ -6,7 +6,9 @@
     <%= csp_meta_tag %>
     <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
     <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
     <!-- THIS SCRIPT CHANGES YOUR GEOLOCATION INTO A CITY NAME -->
@@ -42,8 +44,8 @@
               //find country name
               for (var i = 0; i < results[0].address_components.length; i++) {
                 for (var b = 0; b < results[0].address_components[i].types.length; b++) {
-
-                  //there are different types that might hold a city admin_area_lvl_1 usually does in come cases looking for sublocality type will be more appropriate
+                  
+                                   //there are different types that might hold a city admin_area_lvl_1 usually does in come cases looking for sublocality type will be more appropriate
                   if (results[0].address_components[i].types[b] == "administrative_area_level_1") {
                     //this is the object you are looking for
                     city = results[0].address_components[i];
@@ -65,44 +67,109 @@
       }
     </script>
   </head>
+  
+  
 
   <body onload="initialize()">
-
-    <div class="fullscreen-bg">
+    
+        <div class="fullscreen-bg">
       <video loop="loop" muted="muted" autoplay="autoplay" poster="img/videoframe.jpg" class="fullscreen-bg__video">
         <source src="sky.mp4" type="video/mp4">
       </video>
     </div>
     <div class="city"></div>
 
-    <div class="content">
-    <ul>
-      <li class="dropdown">
-        <a class="active">Account</a>
-        <div class="dropdown-content">
-          <a href="#">Sign Up</a>
-          <a href="#">Log in</a>
-        </div>
-      </li>
-      <li>
-        <a href="#">Plan My Nite</a>
-      </li>
-      <li>
-        <a href="#">Meeting Up</a>
-      </li>
-      <li style="float:right">
-        <%= form_tag(root_path, method: :get) do %>
-        Keyword
-        <%= text_field_tag :search %>
-        Location
-        <%= hidden_field_tag :location, params[:location], id: 'placenow' %>
-        <%= submit_tag 'Search' %>
-      <% end %>
+<br>
+<ul>
+  <li class="dropdown">
+  <a class="active">Account</a>    
+  <div class="dropdown-content">
+      <a onclick="document.getElementById('login').style.display='block'">Log in</a>
+      <a onclick="document.getElementById('signin').style.display='block'">Sign Up</a>
+    </div>
     </li>
+  <li><a href="#">Plan My Nite</a></li>
+  <li><a href="#">Meeting Up</a></li>
+  <li><a href="#"><i class="fas fa-user-circle"></i></a></li>
+  <li style="float:right" >
+    <%= form_tag(root_path, method: :get) do %>
+      <%= text_field_tag :search, nil, placeholder: 'Keyword' %>
+      <%= hidden_field_tag :location, params[:location], id: 'placenow' %>
+      <%= submit_tag 'Search' %>
+    <% end %>
+  </li>
+
+
+
+<div id="login" class="modal">  
+  <form class="modal-content animate" action="/action_page.php">
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('login').style.display='none'" class="close" title="Close Modal">&times;</span>
+      <img src="img_avatar2.png" class="avatar">
+    </div>
+
+    <div class="container">
+      <h5 class="section">Welcome Back</h5>
+      <hr>
+      <label for="username"><b>Username</b></label>
+      <input class="fillmodal" type="text" placeholder="Enter Username" name="username" required>
+
+      <label for="psw"><b>Password</b></label>
+      <input class="fillmodal" type="password" placeholder="Enter Password" name="psw" required>
+        
+      <div class="clearfix section">
+      <button type="submit">Login</button>
+      <button type="button" onclick="document.getElementById('login').style.display='none'" class="cancelbtn">Cancel</button>
+      <p class="psw">Forgot <a href="#">password?</a></p>
+      </div>
+
+    </div>
+  </form>
+</div>
 
   </ul>
 
+<!-- <<<<<<< geolocate
   <%= yield %>
 </div>
-</body>
+</body> -->
+
+  </body>
+
 </html>
+
+
+<div id="signin" class="modal">
+  <span onclick="document.getElementById('signin').style.display='none'" class="close" title="Close Modal">&times;</span>
+  <form class="modal-content" action="/action_page.php">
+    <div class="container">
+
+      <h5 class="section">Sign Up</h5>
+      <hr>
+      <label for="first_name"><b>First Name</b></label>
+      <input class="fillmodal" type="text" placeholder="First Name" name="first_name" required>
+
+      <label for="last_name"><b>Last Name</b></label>
+      <input class="fillmodal" type="text" placeholder="Last Name" name="last_name" required>
+
+      <label for="username"><b>Username</b></label>
+      <input class="fillmodal" type="text" placeholder="Username" name="username" required>
+
+      <label for="email"><b>Email</b></label>
+      <input class="fillmodal" type="text" placeholder="Enter Email" name="email" required>
+
+      <label for="psw"><b>Password</b></label>
+      <input class="fillmodal" type="password" placeholder="Enter Password" name="psw" required>
+
+      <label for="psw-repeat"><b>Repeat Password</b></label>
+      <input class="fillmodal" type="password" placeholder="Repeat Password" name="psw-repeat" required>
+
+      <div class="clearfix section">
+        <button type="button" onclick="document.getElementById('signin').style.display='none'" class="cancelbtn">Cancel</button>
+        <button type="submit" class="signupbtn">Sign Up</button>
+      </div>
+
+    </div>
+  </form>
+</div>
+
