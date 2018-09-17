@@ -4,6 +4,11 @@ class ApplicationController < ActionController::Base
   def fetch_api_data
     searched = params[:search]
     query = searched.gsub(/\W/, '-') unless searched.nil?
+    cost = if params[:cost].nil?
+            '1,2,3'
+           else
+            params[:cost].gsub(/\W/, '-')
+           end
 
     destination = if params[:location].nil?
                     'new+york'
@@ -13,7 +18,7 @@ class ApplicationController < ActionController::Base
 
     @response = RestClient::Request.execute(
       method: :get,
-      url: "https://api.yelp.com/v3/businesses/search?term=#{query}&location=#{destination}&open_now=true",
+      url: "https://api.yelp.com/v3/businesses/search?term=#{query}&location=#{destination}&open_now=true&price=#{cost}",
       headers: { 'Authorization' => 'Bearer N8S3U6LDLLsusNB1-x8lUUwT6VzK8Vrz_jVDrcHKceg6GdJl7--ETsNeFQ1VBFG39Vy_aPd3NuKSBXln5XdH43hbescROWi4NKTPok0KEkxDXsisrsdU7kOJ-KaaW3Yx' }
     )
     @data = JSON.parse(@response)

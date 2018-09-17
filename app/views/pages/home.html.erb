@@ -1,3 +1,9 @@
+<%= form_tag(root_path, method: :get) do |f|%>
+<%= f.check_box_tag(:cost) '1' %>
+<%= label_tag(:cost, "Price") %>
+<%= f.submit 'submit'
+<% end %>
+
 <div class="container">
       <h1 class="section heading">Plan my Nite</h1>
       <p class="section description">Sit back and let us "sort" your night out for you.</p>
@@ -60,6 +66,3 @@
 <br>
 
     <%= javascript_pack_tag 'hello_react' %>
-
-
-
