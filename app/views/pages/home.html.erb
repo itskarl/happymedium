@@ -9,7 +9,9 @@
 <%= label_tag(:filter, "Hot and new Places") %>
 <%= check_box_tag('filter[]', "hot_and_new", {multiple: true})%>
 <%= label_tag(:filter, "Reservations") %>
-<%= check_box_tag('filter[]', "reservations", {multiple:true})%><br>
+<%= check_box_tag('filter[]', "reservations", {multiple:true})%>
+<%= label_tag(:filter, "Deals and Coupons") %>
+<%= check_box_tag('filter[]', "deals", {multiple:true})%><br>
 <%= submit_tag 'filter'%>
 <% end %>
 
@@ -26,16 +28,14 @@
             <p>Address: <%=@address_one%></p>
 
             <p>Price:<%=@loc_one_price%></p>
-           
+
             <%= form_for( :event, :html => { :role => "form" }, url: events_path ) do |f| %>
               <%= f.hidden_field :name, value: @loc_one %>
               <%= f.hidden_field :address, value: @address_one %>
               <%= f.hidden_field :image_url, value: @loc_one_img %>
-<%= f.collection_select :itinerary_id, @itinerary_index, :id, :name, include_blank: true %>
+              <%= f.collection_select :itinerary_id, @itinerary_index, :id, :name, include_blank: true %>
               <%= f.submit "Add" %>
             <% end %>
-
-
 
             </div>
           </div>
