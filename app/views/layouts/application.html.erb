@@ -81,7 +81,12 @@
 <br>
 <ul>
   <li class="dropdown">
+
   <a class="active">Account</a>
+  <% if logged_in? %>
+  <a class="active"><%= current_user.first_name %></a>
+  <% end %>
+
   <div class="dropdown-content">
       <a onclick="document.getElementById('login').style.display='block'">Log in</a>
       <a onclick="document.getElementById('signin').style.display='block'">Sign Up</a>
