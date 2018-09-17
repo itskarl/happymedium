@@ -74,6 +74,6 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 
-# Adding React 
+# Adding React
 gem 'react-rails', '~> 2.4', '>= 2.4.7'
 gem 'webpacker', '~> 3.5', '>= 3.5.5'
