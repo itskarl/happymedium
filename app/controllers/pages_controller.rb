@@ -11,6 +11,7 @@ class PagesController < ApplicationController
     @event = Event.new
     @itinerary = Itinerary.new
     @itinerary = Itinerary.where(params[:id])
+    @event = Event.where(params[:id])
 
   end
 
