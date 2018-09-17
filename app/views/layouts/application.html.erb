@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'index' %>    
 
     <!-- THIS SCRIPT CHANGES YOUR GEOLOCATION INTO A CITY NAME -->
     <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBRMuPVbAo3aTx8JfUFUlwDNqTHQdkdw3I"></script>
@@ -71,114 +72,114 @@
 
 
   <body onload="initialize()">
+      <div id="root">
+          <div class="fullscreen-bg">
+          <video loop="loop" muted="muted" autoplay="autoplay" poster="img/videoframe.jpg" class="fullscreen-bg__video">
+            <source src="sky.mp4" type="video/mp4">
+          </video>
+          </div>
 
-        <div class="fullscreen-bg">
-      <video loop="loop" muted="muted" autoplay="autoplay" poster="img/videoframe.jpg" class="fullscreen-bg__video">
-        <source src="sky.mp4" type="video/mp4">
-      </video>
-    </div>
-
-    <div class="city"></div>
+          <div class="city"></div>
     
 <br>
-<ul>
-  <li class="dropdown">
+          <ul>
+              <li class="dropdown">
 
-  <a class="active">Account</a>
-  <% if logged_in? %>
-  <a class="active"><%= current_user.first_name %></a>
-  <% end %>
+                <a class="active">Account</a>
+                <% if logged_in? %>
+                <a class="active"><%= current_user.first_name %></a>
+                <% end %>
 
-  <div class="dropdown-content">
-      <a onclick="document.getElementById('login').style.display='block'">Log in</a>
-      <a onclick="document.getElementById('signin').style.display='block'">Sign Up</a>
-    </div>
+                <div class="dropdown-content">
+                    <a onclick="document.getElementById('login').style.display='block'">Log in</a>
+                    <a onclick="document.getElementById('signin').style.display='block'">Sign Up</a>
+                </div>
 
-    </li>
-  <li><a href="#">Plan My Nite</a></li>
-  <li><a href="#">Meeting Up</a></li>
-  <li><a href="#"><i class="fas fa-user-circle"></i></a></li>
-  <li style="float:right" >
-    <%= form_tag(root_path, method: :get) do %>
+              </li>
+              <li><a href="#">Plan My Nite</a></li>
+              <li><a href="#">Meeting Up</a></li>
+              <li><a href="#"><i class="fas fa-user-circle"></i></a></li>
+              <li style="float:right" >
+                <%= form_tag(root_path, method: :get) do %>
 
-      <div class="searchbar">
-        <div class="searchicon">
-      <i class="fas fa-search-location "></i>
+              <div class="searchbar">
+                <div class="searchicon">
+              <i class="fas fa-search-location "></i>
+                </div>
+                <div>
+              <%= text_field_tag :search, nil, placeholder: 'Keyword'%>
+                </div>
+              </div>
+
+                <%= hidden_field_tag :location, params[:location], id: 'placenow' %>
+              <% end %>
+              </li>
+          </ul>
+
+
+        <%= yield %>
+
+
+        <div id="login" class="modal">
+            <form class="modal-content animate" action="/action_page.php">
+              <div class="imgcontainer">
+                <span onclick="document.getElementById('login').style.display='none'" class="close" title="Close Modal">&times;</span>
+                <img src="img_avatar2.png" class="avatar">
+              </div>
+
+              <div class="container">
+                  <h5 class="section">Welcome Back</h5>
+                  <hr>
+                  <label for="username"><b>Username</b></label>
+                  <input class="fillmodal" type="text" placeholder="Enter Username" name="username" required>
+
+                  <label for="psw"><b>Password</b></label>
+                  <input class="fillmodal" type="password" placeholder="Enter Password" name="psw" required>
+
+                  <div class="clearfix section">
+                      <button type="submit">Login</button>
+                      <button type="button" onclick="document.getElementById('login').style.display='none'" class="cancelbtn">Cancel</button>
+                      <p class="psw">Forgot <a href="#">password?</a></p>
+                  </div>
+
+              </div>
+            </form>
         </div>
-        <div>
-      <%= text_field_tag :search, nil, placeholder: 'Keyword'%>
+
+        <div id="signin" class="modal">
+            <span onclick="document.getElementById('signin').style.display='none'" class="close" title="Close Modal">&times;</span>
+            <form class="modal-content" action="/action_page.php">
+                <div class="container">
+
+                    <h5 class="section">Sign Up</h5>
+                    <hr>
+                    <label for="first_name"><b>First Name</b></label>
+                    <input class="fillmodal" type="text" placeholder="First Name" name="first_name" required>
+
+                    <label for="last_name"><b>Last Name</b></label>
+                    <input class="fillmodal" type="text" placeholder="Last Name" name="last_name" required>
+
+                    <label for="username"><b>Username</b></label>
+                    <input class="fillmodal" type="text" placeholder="Username" name="username" required>
+
+                    <label for="email"><b>Email</b></label>
+                    <input class="fillmodal" type="text" placeholder="Enter Email" name="email" required>
+
+                    <label for="psw"><b>Password</b></label>
+                    <input class="fillmodal" type="password" placeholder="Enter Password" name="psw" required>
+
+                    <label for="psw-repeat"><b>Repeat Password</b></label>
+                    <input class="fillmodal" type="password" placeholder="Repeat Password" name="psw-repeat" required>
+
+                    <div class="clearfix section">
+                      <button type="button" onclick="document.getElementById('signin').style.display='none'" class="cancelbtn">Cancel</button>
+                      <button type="submit" class="signupbtn">Sign Up</button>
+                    </div>
+
+                </div>
+            </form>
         </div>
       </div>
-
-      <%= hidden_field_tag :location, params[:location], id: 'placenow' %>
-    <% end %>
-  </li>
-</ul>
-
-
-  <%= yield %>
-
-
-  <div id="login" class="modal">
-  <form class="modal-content animate" action="/action_page.php">
-    <div class="imgcontainer">
-      <span onclick="document.getElementById('login').style.display='none'" class="close" title="Close Modal">&times;</span>
-      <img src="img_avatar2.png" class="avatar">
-    </div>
-
-    <div class="container">
-      <h5 class="section">Welcome Back</h5>
-      <hr>
-      <label for="username"><b>Username</b></label>
-      <input class="fillmodal" type="text" placeholder="Enter Username" name="username" required>
-
-      <label for="psw"><b>Password</b></label>
-      <input class="fillmodal" type="password" placeholder="Enter Password" name="psw" required>
-
-      <div class="clearfix section">
-      <button type="submit">Login</button>
-      <button type="button" onclick="document.getElementById('login').style.display='none'" class="cancelbtn">Cancel</button>
-      <p class="psw">Forgot <a href="#">password?</a></p>
-      </div>
-
-    </div>
-  </form>
-</div>
-
-<div id="signin" class="modal">
-  <span onclick="document.getElementById('signin').style.display='none'" class="close" title="Close Modal">&times;</span>
-  <form class="modal-content" action="/action_page.php">
-    <div class="container">
-
-      <h5 class="section">Sign Up</h5>
-      <hr>
-      <label for="first_name"><b>First Name</b></label>
-      <input class="fillmodal" type="text" placeholder="First Name" name="first_name" required>
-
-      <label for="last_name"><b>Last Name</b></label>
-      <input class="fillmodal" type="text" placeholder="Last Name" name="last_name" required>
-
-      <label for="username"><b>Username</b></label>
-      <input class="fillmodal" type="text" placeholder="Username" name="username" required>
-
-      <label for="email"><b>Email</b></label>
-      <input class="fillmodal" type="text" placeholder="Enter Email" name="email" required>
-
-      <label for="psw"><b>Password</b></label>
-      <input class="fillmodal" type="password" placeholder="Enter Password" name="psw" required>
-
-      <label for="psw-repeat"><b>Repeat Password</b></label>
-      <input class="fillmodal" type="password" placeholder="Repeat Password" name="psw-repeat" required>
-
-      <div class="clearfix section">
-        <button type="button" onclick="document.getElementById('signin').style.display='none'" class="cancelbtn">Cancel</button>
-        <button type="submit" class="signupbtn">Sign Up</button>
-      </div>
-
-    </div>
-  </form>
-</div>
-
   </body>
 </html>
 

@@ -1,7 +1,7 @@
 class Itinerary < ApplicationRecord
   after_initialize :set_default_name, unless: :persisted? 
-  # before_save :set_default_name
-  # belongs_to :user
+  # JUST FOR NOW
+  belongs_to :user, optional: true
   has_many :events
 
 
