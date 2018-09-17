@@ -49,5 +49,12 @@ class ApplicationController < ActionController::Base
     @datae = Curl::Easy.perform("https://www.eventbriteapi.com/v3/events/search/?q=#{query}&sort_by=best&location.address=#{destination}&token=FGTPMLNV7K6MQVZZCC6S")
 
     @req = JSON.parse(@datae.body_str)
+    randevent = @req['events'].sample
+    @event_img = randevent['logo']['url']
+    @event_name = randevent['name']['text']
+    @event_desc = randevent['description']['text'].byteslice(0..150)
+    @event_start = Time.parse(randevent['start']['local'])
+    @event_end = Time.parse(randevent['end']['local'])
   end
 end
+
