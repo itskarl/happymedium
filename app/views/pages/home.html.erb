@@ -12,7 +12,7 @@
               <%= f.hidden_field :name, value: @loc_one %>
               <%= f.hidden_field :address, value: @address_one %>
               <%= f.hidden_field :image_url, value: @loc_one_img %>
-
+              <%= f.collection_select :itinerary_id, @itinerary_index, :id, :name, include_blank: true %>
               <%= f.submit "Add" %>
             <% end %>
             </div>
@@ -28,7 +28,7 @@
               <%= f.hidden_field :name, value: @loc_one %>
               <%= f.hidden_field :address, value: @address_one %>
               <%= f.hidden_field :image_url, value: @loc_one_img %>
-
+              <%= f.collection_select :itinerary_id, @itinerary_index, :id, :name, include_blank: true %>
               <%= f.submit "Add" %>
             <% end %>
             </div>
@@ -39,7 +39,7 @@
           <h2> EVENTBRITE </h2>
             <% randevent = @req['events'].sample  %>
             <p>Event: <%= randevent['name']['text'] %></p>
-            <p>Description: <%= randevent['description']['text'].byteslice(0..250) %></p>
+            <p>Description: <%= randevent['description']['text'].slice(0..250) %></p>
             <p>Time: <%= randevent['start']['local'] %>
           </div>
         </div>

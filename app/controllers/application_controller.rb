@@ -10,10 +10,10 @@ class ApplicationController < ActionController::Base
                   else
                     params[:location].gsub(/\W/, '-')
                 end
-
+    # TODO: just revert location back to #{destination} later on
     @response = RestClient::Request.execute(
       method: :get,
-      url: "https://api.yelp.com/v3/businesses/search?term=#{query}&location=#{destination}&open_now=true",
+      url: "https://api.yelp.com/v3/businesses/search?term=#{query}&location=brooklyn&open_now=true",
       headers: { 'Authorization' => 'Bearer N8S3U6LDLLsusNB1-x8lUUwT6VzK8Vrz_jVDrcHKceg6GdJl7--ETsNeFQ1VBFG39Vy_aPd3NuKSBXln5XdH43hbescROWi4NKTPok0KEkxDXsisrsdU7kOJ-KaaW3Yx' }
     )
     @data = JSON.parse(@response)
