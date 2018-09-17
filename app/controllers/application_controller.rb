@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  include SessionsHelper
   # TODO: changed location from yelp API call to take in longitude and latitude
 
   def fetch_api_data
@@ -25,10 +26,12 @@ class ApplicationController < ActionController::Base
                   else
                     params[:location].gsub(/\W/, '-')
                 end
-
+    # TODO: just revert location back to #{destination} later on
     @response = RestClient::Request.execute(
       method: :get,
+
       url: "https://api.yelp.com/v3/businesses/search?term=#{query}&location=#{destination}&open_now=true&price=#{cost[0]},#{cost[1]}&#{filter[0]},#{filter[1]}",
+
       headers: { 'Authorization' => 'Bearer N8S3U6LDLLsusNB1-x8lUUwT6VzK8Vrz_jVDrcHKceg6GdJl7--ETsNeFQ1VBFG39Vy_aPd3NuKSBXln5XdH43hbescROWi4NKTPok0KEkxDXsisrsdU7kOJ-KaaW3Yx' }
     )
     @data = JSON.parse(@response)

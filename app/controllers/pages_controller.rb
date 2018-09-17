@@ -9,9 +9,7 @@ class PagesController < ApplicationController
 
     @event = Event.new
     @itinerary = Itinerary.new
-    @itinerary = Itinerary.where(params[:id])
-    @event = Event.where(params[:id])
-
+    @itinerary_index = Itinerary.all
 
   end
 

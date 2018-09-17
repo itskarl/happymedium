@@ -1,3 +1,4 @@
+
 <%= form_tag(root_path, method: :get) do %>
 <%= label_tag('cost[]', "Price $") %>
 <%= check_box_tag('cost[]', "1",{multiple: true})%>
@@ -12,6 +13,7 @@
 <%= submit_tag 'filter'%>
 <% end %>
 
+
 <div class="container">
       <h1 class="section heading">Plan my Nite</h1>
       <p class="section description">Sit back and let us "sort" your night out for you.</p>
@@ -22,15 +24,19 @@
             <div class="centered">
             <p><%=@loc_one%></p>
             <p>Address: <%=@address_one%></p>
+
             <p>Price:<%=@loc_one_price%></p>
-            <p></p>
+           
             <%= form_for( :event, :html => { :role => "form" }, url: events_path ) do |f| %>
               <%= f.hidden_field :name, value: @loc_one %>
               <%= f.hidden_field :address, value: @address_one %>
               <%= f.hidden_field :image_url, value: @loc_one_img %>
-
+<%= f.collection_select :itinerary_id, @itinerary_index, :id, :name, include_blank: true %>
               <%= f.submit "Add" %>
             <% end %>
+
+
+
             </div>
           </div>
         </div>
@@ -38,6 +44,7 @@
           <div class="event_text">
             <%=image_tag "#{@loc_two_img}", {:style => "width: 100%; height: 40vh; border: 4px inset rgba(222, 222, 222, 0.5);"}%>
             <div class="centered">
+
             <p><%=@loc_two%></p>
             <p>Address: <%=@address_two%></p>
             <p>Price:<%=@loc_two_price%></p>
@@ -45,18 +52,20 @@
               <%= f.hidden_field :name, value: @loc_one %>
               <%= f.hidden_field :address, value: @address_one %>
               <%= f.hidden_field :image_url, value: @loc_one_img %>
+            <%= f.collection_select :itinerary_id, @itinerary_index, :id, :name, include_blank: true %>
 
               <%= f.submit "Add" %>
             <% end %>
+
             </div>
           </div>
         </div>
         <div class="four columns category">
           <div class="event_text">
-          <h2> EVENTBRITE </h2>
             <% randevent = @req['events'].sample  %>
+            <img src="<%= randevent['logo']['url'] %>">
             <p>Event: <%= randevent['name']['text'] %></p>
-            <p>Description: <%= randevent['description']['text'].byteslice(0..250) %></p>
+            <p>Description: <%= randevent['description']['text'].byteslice(0..150) %></p>
             <p>Time: <%= randevent['start']['local'] %>
           </div>
         </div>
@@ -64,14 +73,12 @@
     </div>
 
     <div class="section">
-      <input class="button-primary" type="submit" value="Temp button">
+    <%= form_for( :itinerary, :html => { :role => "form" }, url: itineraries_path ) do |f| %>
+      <%= f.text_field :name, value: "", placeholder: 'Itinerary Name' %>
+      <br>
+      <input class="button-primary" <%= f.submit "Create" %>
+    <% end %>
     </div>
-
-<%= form_for( :itinerary, :html => { :role => "form" }, url: itineraries_path ) do |f| %>
-  <%= f.text_field :name, placeholder: "Name Here" %>
-  <%= f.submit "Create" %>
-<% end %>
-
 <br>
 <hr>
 <br>

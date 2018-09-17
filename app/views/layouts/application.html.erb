@@ -45,17 +45,17 @@
               for (var i = 0; i < results[0].address_components.length; i++) {
                 for (var b = 0; b < results[0].address_components[i].types.length; b++) {
 
-                                   //there are different types that might hold a city admin_area_lvl_1 usually does in come cases looking for sublocality type will be more appropriate
-                  if (results[0].address_components[i].types[b] == "administrative_area_level_1") {
-                    //this is the object you are looking for
-                    city = results[0].address_components[i];
-                    break;
-                  }
-                }
-              }
-              //city data
-              console.log(city.short_name + " " + city.long_name);
-              document.getElementById('placenow').value = city.long_name;
+//there are different types that might hold a city admin_area_lvl_1 usually does in come cases looking for sublocality type will be more appropriate
+  if (results[0].address_components[i].types[b] == "administrative_area_level_1") {
+  //this is the object you are looking for
+    city = results[0].address_components[i];
+    break;
+    }
+  }
+}
+  //city data
+  console.log(city.short_name + " " + city.long_name);
+  document.getElementById('placenow').value = city.long_name;
 
             } else {
               console.log("No results found");
@@ -72,16 +72,23 @@
 
   <body onload="initialize()">
 
-        <!-- <div class="fullscreen-bg"> -->
-      <!-- <video loop="loop" muted="muted" autoplay="autoplay" poster="img/videoframe.jpg" class="fullscreen-bg__video"> -->
-        <!-- <source src="sky.mp4" type="video/mp4"> -->
-      <!-- </video> -->
+        <div class="fullscreen-bg">
+      <video loop="loop" muted="muted" autoplay="autoplay" poster="img/videoframe.jpg" class="fullscreen-bg__video">
+        <source src="sky.mp4" type="video/mp4">
+      </video>
     </div>
+
     <div class="city"></div>
+    
 <br>
 <ul>
   <li class="dropdown">
+
   <a class="active">Account</a>
+  <% if logged_in? %>
+  <a class="active"><%= current_user.first_name %></a>
+  <% end %>
+
   <div class="dropdown-content">
       <a onclick="document.getElementById('login').style.display='block'">Log in</a>
       <a onclick="document.getElementById('signin').style.display='block'">Sign Up</a>
@@ -93,13 +100,26 @@
   <li><a href="#"><i class="fas fa-user-circle"></i></a></li>
   <li style="float:right" >
     <%= form_tag(root_path, method: :get) do %>
-      <%= text_field_tag :search, nil, placeholder: 'Keyword' %>
+
+      <div class="searchbar">
+        <div class="searchicon">
+      <i class="fas fa-search-location "></i>
+        </div>
+        <div>
+      <%= text_field_tag :search, nil, placeholder: 'Keyword'%>
+        </div>
+      </div>
+
       <%= hidden_field_tag :location, params[:location], id: 'placenow' %>
-      <%= submit_tag 'Search' %>
     <% end %>
   </li>
+</ul>
 
-<div id="login" class="modal">
+
+  <%= yield %>
+
+
+  <div id="login" class="modal">
   <form class="modal-content animate" action="/action_page.php">
     <div class="imgcontainer">
       <span onclick="document.getElementById('login').style.display='none'" class="close" title="Close Modal">&times;</span>
@@ -124,18 +144,6 @@
     </div>
   </form>
 </div>
-
-  </ul>
-
-<div>
-  <%= yield %>
-</div>
-</body>
-
-  </body>
-
-</html>
-
 
 <div id="signin" class="modal">
   <span onclick="document.getElementById('signin').style.display='none'" class="close" title="Close Modal">&times;</span>
@@ -170,3 +178,7 @@
     </div>
   </form>
 </div>
+
+  </body>
+</html>
+
