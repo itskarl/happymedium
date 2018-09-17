@@ -1,0 +1,7 @@
+  <%= form_for(:session, url: login_path) do |form| %>
+<div><%= form.email_field :email, placeholder: 'EMAIL', required: true %></div>
+
+<div><%= form.password_field :password, placeholder: 'ENTER PASSWORD', required: true %></div>
+
+<%= form.submit "LOG IN"%>
+<% end %>
