@@ -1,20 +1,4 @@
 
-<%= form_tag(root_path, method: :get) do %>
-<%= label_tag('cost[]', "Price $") %>
-<%= check_box_tag('cost[]', "1",{multiple: true})%>
-<%= label_tag(:cost, "Price $$") %>
-<%= check_box_tag('cost[]', "2", {multiple: true})%>
-<%= label_tag(:cost, "Price $$$") %>
-<%= check_box_tag('cost[]', "3", {multiple: true})%>
-<%= label_tag(:filter, "Hot and new Places") %>
-<%= check_box_tag('filter[]', "hot_and_new", {multiple: true})%>
-<%= label_tag(:filter, "Reservations") %>
-<%= check_box_tag('filter[]', "reservations", {multiple:true})%>
-<%= label_tag(:filter, "Deals and Coupons") %>
-<%= check_box_tag('filter[]', "deals", {multiple:true})%><br>
-<%= submit_tag 'filter'%>
-<% end %>
-
 
 <div class="container">
       <h1 class="section heading">Plan my Nite</h1>
@@ -63,10 +47,13 @@
         <div class="four columns category">
           <div class="event_text">
             <% randevent = @req['events'].sample  %>
+            <% if !randevent['logo']['url'].nil?%>
             <img src="<%= randevent['logo']['url'] %>">
+            <%end%>
             <p>Event: <%= randevent['name']['text'] %></p>
             <p>Description: <%= randevent['description']['text'].byteslice(0..150) %></p>
             <p>Time: <%= randevent['start']['local'] %>
+            <p>Price is free?: <%=randevent["is_free"]%></p>
           </div>
         </div>
       </div>
