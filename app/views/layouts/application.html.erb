@@ -94,7 +94,6 @@
         <%= form_tag(root_path, method: :get) do %>
         Keyword
         <%= text_field_tag :search %>
-        Location
         <%= hidden_field_tag :location, params[:location], id: 'placenow' %>
         <%= submit_tag 'Search' %>
       <% end %>
