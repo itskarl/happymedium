@@ -1,5 +1,3 @@
-
-
 <div class="container">
       <h1 class="section heading">Plan my Nite</h1>
       <p class="section description">Sit back and let us "sort" your night out for you.</p>
@@ -10,6 +8,13 @@
             <div class="centered">
             <p><%=@loc_one%></p>
             <p>Address: <%=@address_one%></p>
+            <%= form_for( :event, :html => { :role => "form" }, url: events_path ) do |f| %>
+              <%= f.hidden_field :name, value: @loc_one %>
+              <%= f.hidden_field :address, value: @address_one %>
+              <%= f.hidden_field :image_url, value: @loc_one_img %>
+
+              <%= f.submit "Add" %>
+            <% end %>
             </div>
           </div>
         </div>
@@ -19,6 +24,13 @@
             <div class="centered">
             <p><%=@loc_two%></p>
             <p>Address: <%=@address_two%></p>
+            <%= form_for( :event, :html => { :role => "form" }, url: events_path ) do |f| %>
+              <%= f.hidden_field :name, value: @loc_one %>
+              <%= f.hidden_field :address, value: @address_one %>
+              <%= f.hidden_field :image_url, value: @loc_one_img %>
+
+              <%= f.submit "Add" %>
+            <% end %>
             </div>
           </div>
         </div>
@@ -38,8 +50,16 @@
       <input class="button-primary" type="submit" value="Temp button">
     </div>
 
+<%= form_for( :itinerary, :html => { :role => "form" }, url: itineraries_path ) do |f| %>
+  <%= f.text_field :name, placeholder: "Name Here" %>
+  <%= f.submit "Create" %>
+<% end %>
+
+<br>
+<hr>
+<br>
 
     <%= javascript_pack_tag 'hello_react' %>
 
 
-    
+
