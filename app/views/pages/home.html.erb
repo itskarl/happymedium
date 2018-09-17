@@ -47,14 +47,12 @@
     </div>
 
     <div class="section">
-      <input class="button-primary" type="submit" value="Temp button">
+    <%= form_for( :itinerary, :html => { :role => "form" }, url: itineraries_path ) do |f| %>
+      <%= f.text_field :name, value: "", placeholder: 'Itinerary Name' %>
+      <br>
+      <input class="button-primary" <%= f.submit "Create" %>
+    <% end %>
     </div>
-
-<%= form_for( :itinerary, :html => { :role => "form" }, url: itineraries_path ) do |f| %>
-  <%= f.text_field :name, placeholder: "Name Here" %>
-  <%= f.submit "Create" %>
-<% end %>
-
 <br>
 <hr>
 <br>

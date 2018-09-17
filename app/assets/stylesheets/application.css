@@ -15,7 +15,7 @@
  */
 
 
- /* .fullscreen-bg {
+.fullscreen-bg {
      position: fixed;
      top: 0;
      right: 0;
@@ -42,16 +42,20 @@ transform: translate(-50%,-50%);
  }
 
 .city {
-  position: fixed;
-   width: 100vw;
-   height: 100vh;
-   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(67, 42, 94, 0.63), rgba(0, 0, 0, 0.9)), url(/buildings.png);
-   background-size: cover;
-   background-position: center;
-   background-attachment: fixed;
-   background-repeat: no-repeat;
-   z-index: 1;
- } */
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(67, 42, 94, 0.63), rgba(0, 0, 0, 0.9)), url(/buildings.png);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    z-index: -1;
+} 
 
 .fillmodal {
     width: 100%;
@@ -102,7 +106,9 @@ img.avatar {
     margin: 5% auto 15% auto;
     width: 60%;
     box-shadow: 0px 0px 20px 17px #7e7e7ef2;
+    z-index: auto;
 }
+
 .close {
     position: absolute;
     right: 25px;
