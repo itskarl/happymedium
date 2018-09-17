@@ -14,32 +14,32 @@
  *= require_self
  */
 
-
+ /* RGB */
 .fullscreen-bg {
-     position: fixed;
-     top: 0;
-     right: 0;
-     bottom: 0;
-     left: 0;
-     overflow: hidden;
-     z-index: -100;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: -100;
 
- }
+}
 
- .fullscreen-bg__video {
-     position: absolute;
-     top: 0;
-     left: 0;
-     min-width: 100%;
-     min-height: 100%;
-     width: auto;
-     height: auto;
-     position: absolute;
+.fullscreen-bg__video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    position: absolute;
 top: 50%;
 left: 50%;
 transform: translate(-50%,-50%);
     z-index: 0;
- }
+}
 
 .city {
     position: fixed;
@@ -49,13 +49,40 @@ transform: translate(-50%,-50%);
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(67, 42, 94, 0.63), rgba(0, 0, 0, 0.9)), url(/buildings.png);
+    background: linear-gradient(to bottom, rgba(73, 48, 107, 0.71) 0%, rgba(105, 45, 70, 0.58) 39%, rgb(13, 21, 29) 100%), url(/buildings.png);
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     background-repeat: no-repeat;
     z-index: -1;
-} 
+}
+
+.searchbar {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.searchbar input[type=text] {
+    background-color: transparent;
+    border-radius: 0px 50px 50px 0px;
+    border-top: 1px solid #E6E8E6;
+    border-right: 1px solid #E6E8E6;
+    border-bottom: 1px solid #E6E8E6;
+    border-left: none;
+}
+
+/* .searchbar input[type=]{
+    background-color: transparent;
+    border-radius: 50px 0px 0px 50px;
+    border-radius: 0px 50px 50px 0px;
+    border-top: 1px solid #E6E8E6;
+    border-left: 1px solid #E6E8E6;
+    border-bottom: 1px solid #E6E8E6;
+    border-right: none;
+} */
+
 
 .fillmodal {
     width: 100%;
@@ -64,7 +91,7 @@ transform: translate(-50%,-50%);
 
 button {
     background-color: rgb(0, 116, 6);
-    color: white;
+    color: #E6E8E6;
 }
 
 button:hover {
@@ -112,6 +139,7 @@ img.avatar {
 .close {
     position: absolute;
     right: 25px;
+    color: transparent;
 }
 
 .animate {

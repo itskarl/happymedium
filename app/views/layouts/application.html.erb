@@ -95,7 +95,16 @@
   <li><a href="#"><i class="fas fa-user-circle"></i></a></li>
   <li style="float:right" >
     <%= form_tag(root_path, method: :get) do %>
-      <%= text_field_tag :search, nil, placeholder: 'Keyword' %>
+
+      <div class="searchbar">
+        <div class="searchicon">
+      <i class="fas fa-search-location "></i>
+        </div>
+        <div>
+      <%= text_field_tag :search, nil, placeholder: 'Keyword'%>
+        </div>
+      </div>
+
       <%= hidden_field_tag :location, params[:location], id: 'placenow' %>
     <% end %>
   </li>

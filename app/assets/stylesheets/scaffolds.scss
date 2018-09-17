@@ -25,7 +25,7 @@ body {
 .event_text {
   position: relative;
   text-align: center;
-  color: white;
+  color: #E6E8E6;
 }
 
 
@@ -50,9 +50,27 @@ body {
   font-size: large;
 }
 
+.fa-search-location:before {
+  content: "\f689";
+  font-size: x-large;
+  color: #E6E8E6;
+}
+
+.searchicon {
+  border-radius: 50px 0px 0px 50px;
+  border-top: 1px solid #E6E8E6;
+  border-left: 1px solid #E6E8E6;
+  border-bottom: 1px solid #E6E8E6;
+  border-right: none;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+}
 li a {
   display: block;
-  color: white;
+  color: #E6E8E6;
   text-align: center;
   text-decoration: none;
 }
@@ -73,7 +91,7 @@ li {
 li a,
 .dropbtn {
   display: inline-block;
-  color: white;
+  color: #E6E8E6;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
