@@ -1,7 +1,15 @@
-<%= form_tag(root_path, method: :get) do |f|%>
-<%= f.check_box_tag(:cost) '1' %>
-<%= label_tag(:cost, "Price") %>
-<%= f.submit 'submit'
+<%= form_tag(root_path, method: :get) do %>
+<%= label_tag('cost[]', "Price $") %>
+<%= check_box_tag('cost[]', "1",{multiple: true})%>
+<%= label_tag(:cost, "Price $$") %>
+<%= check_box_tag('cost[]', "2", {multiple: true})%>
+<%= label_tag(:cost, "Price $$$") %>
+<%= check_box_tag('cost[]', "3", {multiple: true})%>
+<%= label_tag(:filter, "Hot and new Places") %>
+<%= check_box_tag('filter[]', "hot_and_new", {multiple: true})%>
+<%= label_tag(:filter, "Reservations") %>
+<%= check_box_tag('filter[]', "reservations", {multiple:true})%><br>
+<%= submit_tag 'filter'%>
 <% end %>
 
 <div class="container">
@@ -14,6 +22,8 @@
             <div class="centered">
             <p><%=@loc_one%></p>
             <p>Address: <%=@address_one%></p>
+            <p>Price:<%=@loc_one_price%></p>
+            <p></p>
             <%= form_for( :event, :html => { :role => "form" }, url: events_path ) do |f| %>
               <%= f.hidden_field :name, value: @loc_one %>
               <%= f.hidden_field :address, value: @address_one %>
@@ -30,6 +40,7 @@
             <div class="centered">
             <p><%=@loc_two%></p>
             <p>Address: <%=@address_two%></p>
+            <p>Price:<%=@loc_two_price%></p>
             <%= form_for( :event, :html => { :role => "form" }, url: events_path ) do |f| %>
               <%= f.hidden_field :name, value: @loc_one %>
               <%= f.hidden_field :address, value: @address_one %>

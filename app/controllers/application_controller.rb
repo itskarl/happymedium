@@ -4,11 +4,21 @@ class ApplicationController < ActionController::Base
   def fetch_api_data
     searched = params[:search]
     query = searched.gsub(/\W/, '-') unless searched.nil?
-    cost = if params[:cost].nil?
-            '1,2,3'
-           else
-            params[:cost].gsub(/\W/, '-')
-           end
+    cost = []
+    if params[:filter].nil?
+      filter = ''
+    else
+      filter = params[:filter]
+    end
+
+     if params[:cost].nil?
+          cost = [1,2,3]
+     else
+        params[:cost].each do |param|
+          cost<< param
+        end
+     end
+    p cost
 
     destination = if params[:location].nil?
                     'new+york'
@@ -18,7 +28,7 @@ class ApplicationController < ActionController::Base
 
     @response = RestClient::Request.execute(
       method: :get,
-      url: "https://api.yelp.com/v3/businesses/search?term=#{query}&location=#{destination}&open_now=true&price=#{cost}",
+      url: "https://api.yelp.com/v3/businesses/search?term=#{query}&location=#{destination}&open_now=true&price=#{cost[0]},#{cost[1]}&#{filter[0]},#{filter[1]}",
       headers: { 'Authorization' => 'Bearer N8S3U6LDLLsusNB1-x8lUUwT6VzK8Vrz_jVDrcHKceg6GdJl7--ETsNeFQ1VBFG39Vy_aPd3NuKSBXln5XdH43hbescROWi4NKTPok0KEkxDXsisrsdU7kOJ-KaaW3Yx' }
     )
     @data = JSON.parse(@response)
@@ -30,8 +40,11 @@ class ApplicationController < ActionController::Base
     @loc_two_img = @locationTwo['image_url']
     @address_one = @locationOne['location']['display_address'][0]
     @address_two = @locationTwo['location']['display_address'][0]
+    @loc_one_price = @locationOne['price']
+    @loc_two_price = @locationTwo['price']
 
     @datae = Curl::Easy.perform("https://www.eventbriteapi.com/v3/events/search/?q=#{query}&sort_by=best&location.address=#{destination}&token=FGTPMLNV7K6MQVZZCC6S")
+
     @req = JSON.parse(@datae.body_str)
   end
 end
