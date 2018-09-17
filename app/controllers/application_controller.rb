@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  include SessionsHelper
   # TODO: changed location from yelp API call to take in longitude and latitude
 
   def fetch_api_data
