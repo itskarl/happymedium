@@ -123,7 +123,10 @@
       <%= label_tag(:filter, "Reservations") %>
       <%= check_box_tag('filter[]', "reservations", {multiple:true})%>
       <%= label_tag(:filter, "Deals and Coupons") %>
-      <%= check_box_tag('filter[]', "deals", {multiple:true})%><br>
+      <%= check_box_tag('filter[]', "deals", {multiple:true})%>
+      <%= label_tag(:miles_away, "Distance from current location") %>
+      <%= select_tag(:miles_away, options_for_select([[5,5], [10,10],[25,25]])) %>
+      <br>
       <%= submit_tag 'filter'%>
     <% end %>
   </li>

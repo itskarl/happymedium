@@ -12,6 +12,7 @@
             <p>Address: <%=@address_one%></p>
 
             <p>Price:<%=@loc_one_price%></p>
+            <p>Distance:<%=@loc_one_distance%></p>
 
             <%= form_for( :event, :html => { :role => "form" }, url: events_path ) do |f| %>
               <%= f.hidden_field :name, value: @loc_one %>
@@ -32,6 +33,8 @@
             <p><%=@loc_two%></p>
             <p>Address: <%=@address_two%></p>
             <p>Price:<%=@loc_two_price%></p>
+            <p><%=@loc_two_distance%></p>
+            
             <%= form_for( :event, :html => { :role => "form" }, url: events_path ) do |f| %>
               <%= f.hidden_field :name, value: @loc_one %>
               <%= f.hidden_field :address, value: @address_one %>
