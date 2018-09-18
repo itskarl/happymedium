@@ -30,7 +30,7 @@
         codeLatLng(lat, lng)
       }
       function errorFunction() {
-        console.log("Geocoder failed");
+        console.log("Geocoder failed")
       }
       function initialize() {
         geocoder = new google.maps.Geocoder();
@@ -90,74 +90,59 @@
 
           <ul>
 
-                <% if logged_in? %>
-                <li><%= link_to "Log Out", logout_path %></li>
-                <li><a href="<%= user_path(current_user.id) %>"><i class="fas fa-user-circle"></i>&nbsp<%= current_user.first_name.upcase %></a></li>
 
-                <% else %>
-              <li class="dropdown">
-                <a class="active">ACCOUNT</a>
-                  <div class="dropdown-content">
-                      <a onclick="document.getElementById('login').style.display='block'">LOG IN</a>
-                      <a onclick="document.getElementById('signin').style.display='block'">SIGN UP</a>
-                  </div>
-              </li>
-                <% end %>
-
-
-              <li><a href="<%= root_path %> ">PLAN MY NITE</a></li>
-              <li><a href="#">MEETING UP</a></li>
-
-
-
-
-  <li style="float:right"><a onclick="document.getElementById('advancesearch').style.display='block'">ADVANCED SEARCH</a></li>
+    <% if logged_in? %>
+    <li><%= link_to "Log Out", logout_path %></li>
+    <li><a href="<%= user_path(current_user.id) %>"><i class="fas fa-user-circle"></i>&nbsp<%= current_user.first_name %></a>
+    <% else %>
+  <li class="dropdown">
+    <a class="active">Account</a>
+      <div class="dropdown-content">
+          <a onclick="document.getElementById('login').style.display='block'">Log in</a>
+          <a onclick="document.getElementById('signin').style.display='block'">Sign Up</a>
+      </div>
+  </li>
+    <% end %>
+  <li><a href="<%= root_path %> ">Plan My Nite</a></li>
+  <li><a href="charges/new">Concierge</a></li>
+  <li style="float:right"><a onclick="document.getElementById('advancesearch').style.display='block'">Advance Search</a></li>
   <li style="float:right">
     <%= form_tag(root_path, method: :get) do %>
+    <div class="searchbar">
+      <div class="searchicon">
+        <i class="fas fa-search-location "></i>
+      </div>
+      <div>
+        <%= text_field_tag :search, nil, placeholder: 'Keyword'%>
+      </div>
+    </div>
 
-      <div class="searchbar">
-        <div class="searchicon">
-      <i class="fas fa-search-location "></i>
-                </div>
-                <div>
-              <%= text_field_tag :search, nil, placeholder: 'Keyword'%>
-              <input type="hidden" name="location" id="placenow" value="<%= request.location.city %>" >
-                </div>
-              </div>
     <% end %>
     </ul>
+
+
         <%= yield %>
 
 
         <div id="login" class="modal">
             <%= form_for( :session, :html => { class: 'modal-content animate' }, url: login_path ) do |f| %>
-              <div class="imgcontainer">
                 <span onclick="document.getElementById('login').style.display='none'" class="close" title="Close Modal">&times;</span>
-                <img src="img_avatar2.png" class="avatar">
-              </div>
-
               <div class="container">
                   <h5 class="section">Welcome Back</h5>
                   <hr>
                   <label for="username"><b>Username</b></label>
                   <%= f.text_field :username, autofocus: true, placeholder: 'Username', class: 'fillmodal', required: true %>
 
-
                   <label for="password"><b>Password</b></label>
                   <%= f.password_field :password, placeholder: 'Enter Password', class: 'fillmodal', required: true %>
-
-
                   <div class="clearfix section">
                       <button type="submit">Login</button>
                       <button type="button" onclick="document.getElementById('login').style.display='none'" class="cancelbtn">Cancel</button>
                       <p class="psw">Forgot <a href="#">password?</a></p>
                   </div>
-
               </div>
-
             <% end %>
         </div>
-
       </div>
 
 
@@ -171,26 +156,18 @@
                     <label for="first_name"><b>First Name</b></label>
                     <%= f.text_field :first_name, placeholder: 'First Name', class: 'fillmodal', required: true%>
 
-
                     <label for="last_name"><b>Last Name</b></label>
                     <%= f.text_field :last_name, placeholder: 'Last Name', class: 'fillmodal', required: true %>
 
-
                     <label for="username"><b>Username</b></label>
                     <%= f.text_field :username, placeholder: 'Username', class: 'fillmodal', required: true %>
-
-
                     <label for="email"><b>Email</b></label>
                     <%= f.email_field :email, placeholder: 'Enter Email', class: 'fillmodal', required: true %>
 
-
                     <label for="password"><b>Password</b></label>
                     <%= f.password_field :password, placeholder: 'Enter Password', class: 'fillmodal', required: true %>
-
-
                     <label for="password_confirmation"><b>Repeat Password</b></label>
                     <%= f.password_field :password_confirmation, placeholder: 'Confirm Password', class: 'fillmodal', required: true %>
-
 
                     <div class="clearfix section">
                       <button type="button" onclick="document.getElementById('signin').style.display='none'" class="cancelbtn">Cancel</button>
@@ -199,12 +176,8 @@
                 </div>
             <% end %>
         </div>
-
       </div>
-
-
-
-</div>
+    </div>
 
 <div id="advancesearch" class="modal">
   <span onclick="document.getElementById('advancesearch').style.display='none'" class="close" title="Close Modal">&times;</span>
@@ -231,6 +204,7 @@
     </div>
   </form>
 </div>
+
 
 
   </body>
