@@ -96,4 +96,3 @@ class ApplicationController < ActionController::Base
     @event_free = randevent['is_free']
   end
 end
-
