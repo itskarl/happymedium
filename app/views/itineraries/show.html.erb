@@ -1,26 +1,34 @@
+  <h1 class="section heading"><%= @itinerary.name %></h1>
+  <p class="section description">Make it a night to remember</p>
 
-
-<h1><%= @itinerary.name %></h1>
-
-<% @events.each do |e| %>
-  <div>
-    <h3><%= e.name %></h3>
-    <p><%= e.address %></p>
-    <%= image_tag src="#{e.image_url}", {:style => "width: 30%; height: 30%; border: 4px inset rgba(222, 222, 222, 0.5);"}%>
-    <%= link_to "Delete", event_path(e), method: :delete, data: { confirm: 'Are you certain?' } %>
+      <% @events.reverse.each do |e| %>
+  <div class="section categories">
+    <div class="container">
+      <div class="row">
+        <div class="one-half column category">
+      <%= image_tag src="#{e.image_url}", {:style => "width: 85%; height: 27vh; border: 4px inset rgba(222, 222, 222, 0.5);"}%>
+        </div>
+        <div class="one-half column category">
+      <h5><%= e.name %></h5>
+      <p><%= e.address %></p>
+      <%= link_to "Delete", event_path(e), method: :delete, data: { confirm: 'Are you certain?' } %>
+        </div>
+      </div>
+    </div>
   </div>
-<% end %>
+      <% end %>
 
-     <div class="row">
+  <h1 class="section heading">Last minute adds</h1>
+
+<div class="container">
+    <div class="row">
         <div class="four columns category">
           <div class="event_text">
             <%=image_tag "#{@loc_one_img}", {:style => "width: 100%; height: 40vh;  border: 4px inset rgba(222, 222, 222, 0.5);"}%>
             <div class="centered">
             <p><%=@loc_one%></p>
             <p>Address: <%=@address_one%></p>
-
             <p>Price:<%=@loc_one_price%></p>
-           
             <%= form_for( :event, :html => { :role => "form" }, url: events_path ) do |f| %>
               <%= f.hidden_field :name, value: @loc_one %>
               <%= f.hidden_field :address, value: @address_one %>
@@ -28,12 +36,11 @@
               <%= f.hidden_field :itinerary_id, value: @itinerary.id %>
               <%= f.submit "Add" %>
             <% end %>
-
-
-
             </div>
           </div>
         </div>
+
+
         <div class="four columns category">
           <div class="event_text">
             <%=image_tag "#{@loc_two_img}", {:style => "width: 100%; height: 40vh; border: 4px inset rgba(222, 222, 222, 0.5);"}%>
@@ -53,13 +60,15 @@
             </div>
           </div>
         </div>
+
         <div class="four columns category">
           <div class="event_text">
-            <%=image_tag "#{@event_img}", {:style => "width: 100%; height: 40vh; border: 4px inset rgba(222, 222, 222, 0.5);"}%>
-            <p>Event: <%= @event_name %></p>
-            <p>Description: <%= @event_desc %></p>
-            <p>Time Start: <%= @event_start %> </p>
-            <p>Time End: <%= @event_end %> </p>
+            <%=image_tag "#{@event_img}"%>
+            <div class="centered">
+            <p><%= @event_name %></p>
+            <p><%= @event_desc %></p>
+            <p><%= @event_start %></p>
+            <p><%= @event_end %></p>
             <%= form_for( :event, :html => { :role => "form" }, url: events_path ) do |f| %>
               <%= f.hidden_field :name, value: @event_name %>
               <%= f.hidden_field :image_url, value: @event_img %>
