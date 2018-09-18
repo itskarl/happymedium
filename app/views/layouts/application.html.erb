@@ -119,7 +119,7 @@
                 </div>
                 <div>
               <%= text_field_tag :search, nil, placeholder: 'Keyword'%>
-              <%= hidden_field_tag :location, params[:location], calue: <%= request.location.city %>%>
+              <input type="hidden" name="location" id="placenow" value="<%= request.location.city %>" >
                 </div>
               </div>
     <% end %>
