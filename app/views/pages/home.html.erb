@@ -1,18 +1,4 @@
 
-<%= form_tag(root_path, method: :get) do %>
-<%= label_tag('cost[]', "Price $") %>
-<%= check_box_tag('cost[]', "1",{multiple: true})%>
-<%= label_tag(:cost, "Price $$") %>
-<%= check_box_tag('cost[]', "2", {multiple: true})%>
-<%= label_tag(:cost, "Price $$$") %>
-<%= check_box_tag('cost[]', "3", {multiple: true})%>
-<%= label_tag(:filter, "Hot and new Places") %>
-<%= check_box_tag('filter[]', "hot_and_new", {multiple: true})%>
-<%= label_tag(:filter, "Reservations") %>
-<%= check_box_tag('filter[]', "reservations", {multiple:true})%><br>
-<%= submit_tag 'filter'%>
-<% end %>
-
 
 <div class="container">
       <h1 class="section heading">Plan my Nite</h1>
@@ -27,6 +13,9 @@
 
             <p>Price:<%=@loc_one_price%></p>
 
+            <p>Distance:<%=@loc_one_distance%></p>
+
+
             <%= form_for( :event, :html => { :role => "form" }, url: events_path ) do |f| %>
               <%= f.hidden_field :name, value: @loc_one %>
               <%= f.hidden_field :address, value: @address_one %>
@@ -34,8 +23,6 @@
               <%= f.collection_select :itinerary_id, @itinerary_index, :id, :name, include_blank: true %>
               <%= f.submit "Add" %>
             <% end %>
-
-
 
             </div>
           </div>
@@ -48,6 +35,8 @@
             <p><%=@loc_two%></p>
             <p>Address: <%=@address_two%></p>
             <p>Price:<%=@loc_two_price%></p>
+            <p><%=@loc_two_distance%></p>
+            
             <%= form_for( :event, :html => { :role => "form" }, url: events_path ) do |f| %>
               <%= f.hidden_field :name, value: @loc_two %>
               <%= f.hidden_field :address, value: @address_two %>
@@ -62,6 +51,16 @@
         </div>
         <div class="four columns category">
           <div class="event_text">
+
+            <% randevent = @req['events'].sample  %>
+            <% if !randevent['logo']['url'].nil?%>
+            <img src="<%= randevent['logo']['url'] %>">
+            <%end%>
+            <p>Event: <%= randevent['name']['text'] %></p>
+            <p>Description: <%= randevent['description']['text'].byteslice(0..150) %></p>
+            <p>Time: <%= randevent['start']['local'] %>
+            <p>Price is free?: <%=randevent["is_free"]%></p>
+
               <%=image_tag "#{@event_img}", {:style => "width: 100%; height: 40vh; border: 4px inset rgba(222, 222, 222, 0.5);"}%>
               <p>Event: <%= @event_name %></p>
               <p>Description: <%= @event_desc %></p>
@@ -73,6 +72,7 @@
                 <%= f.collection_select :itinerary_id, @itinerary_index, :id, :name, include_blank: true %>
                 <%= f.submit "Add"%>
               <% end %>
+
           </div>
         </div>
       </div>
@@ -110,5 +110,5 @@
               ></script>
     <% end %>
 
-<%= current_user.email %>
+
 

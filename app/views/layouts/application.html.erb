@@ -76,6 +76,7 @@
 
 
   <body onload="initialize()">
+
       <div id="root">
       <!-- <%= react_component("App") %> -->
           <div class="fullscreen-bg">
@@ -85,7 +86,7 @@
           </div>
 
           <div class="city"></div>
-    
+
 <br>
           <ul>
               <li class="dropdown">
@@ -151,6 +152,34 @@
             </form>
         </div>
 
+      </div>
+
+      <%= hidden_field_tag :location, params[:location], id: 'placenow' %>
+
+      <%= label_tag('cost[]', "Price $") %>
+      <%= check_box_tag('cost[]', "1",{multiple: true})%>
+      <%= label_tag(:cost, "Price $$") %>
+      <%= check_box_tag('cost[]', "2", {multiple: true})%>
+      <%= label_tag(:cost, "Price $$$") %>
+      <%= check_box_tag('cost[]', "3", {multiple: true})%>
+      <%= label_tag(:filter, "Hot and new Places") %>
+      <%= check_box_tag('filter[]', "hot_and_new", {multiple: true})%>
+      <%= label_tag(:filter, "Reservations") %>
+      <%= check_box_tag('filter[]', "reservations", {multiple:true})%>
+      <%= label_tag(:filter, "Deals and Coupons") %>
+      <%= check_box_tag('filter[]', "deals", {multiple:true})%>
+      <%= label_tag(:miles_away, "Distance from current location") %>
+      <%= select_tag(:miles_away, options_for_select([[5,5], [10,10],[25,25]])) %>
+      <br>
+      <%= submit_tag 'filter'%>
+    <% end %>
+  </li>
+</ul>
+
+
+  <%= yield %>
+
+
         <div id="signin" class="modal">
             <span onclick="document.getElementById('signin').style.display='none'" class="close" title="Close Modal">&times;</span>
             <form class="modal-content" action="/action_page.php">
@@ -187,4 +216,3 @@
       </div>
   </body>
 </html>
-
