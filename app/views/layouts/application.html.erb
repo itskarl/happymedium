@@ -89,22 +89,23 @@
 
 <br>
           <ul>
-              <li class="dropdown">
 
-                <a class="active">Account</a>
                 <% if logged_in? %>
-                <a class="active"><%= current_user.first_name %></a>
+                <li><%= link_to "Log Out", logout_path %></li>
+                <li><a href="<%= user_path(current_user.id) %>"><i class="fas fa-user-circle"></i>&nbsp<%= current_user.first_name %></a></li>
+
+                <% else %>
+              <li class="dropdown">
+                <a class="active">Account</a>
+                  <div class="dropdown-content">
+                      <a onclick="document.getElementById('login').style.display='block'">Log in</a>
+                      <a onclick="document.getElementById('signin').style.display='block'">Sign Up</a>
+                  </div>
+              </li>
                 <% end %>
 
-                <div class="dropdown-content">
-                    <a onclick="document.getElementById('login').style.display='block'">Log in</a>
-                    <a onclick="document.getElementById('signin').style.display='block'">Sign Up</a>
-                </div>
-
-              </li>
-              <li><a href="#">Plan My Nite</a></li>
+              <li><a href="<%= root_path %> ">Plan My Nite</a></li>
               <li><a href="#">Meeting Up</a></li>
-              <li><a href="#"><i class="fas fa-user-circle"></i></a></li>
               <li style="float:right" >
                 <%= form_tag(root_path, method: :get) do %>
 

@@ -17,6 +17,10 @@ class ItinerariesController < ApplicationController
 
   def create 
     @itinerary = Itinerary.new(itinerary_params)
+    current_user = session[:user_id]
+    if current_user
+      @itinerary.user_id = current_user
+    end
     respond_to do |format|
       if @itinerary.save
         p "Itinerary Created!"
