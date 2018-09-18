@@ -80,8 +80,8 @@ class ApplicationController < ActionController::Base
     @address_two = @locationTwo['location']['display_address'][0]
     @loc_one_price = @locationOne['price']
     @loc_two_price = @locationTwo['price']
-    @loc_one_distance = @locationOne['distance']
-    @loc_two_distance = @locationTwo['distance']
+    @loc_one_distance = (@locationOne['distance'] * 0.00062137).round(2)
+    @loc_two_distance = (@locationTwo['distance'] * 0.00062137).round(2)
     @data.first[1].count
 
     @datae = Curl::Easy.perform("https://www.eventbriteapi.com/v3/events/search/?q=#{query}&sort_by=best&location.address=#{destination}&price=#{event_cost}&token=FGTPMLNV7K6MQVZZCC6S")
