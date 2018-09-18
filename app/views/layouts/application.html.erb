@@ -118,9 +118,29 @@
               </div>
 
                 <%= hidden_field_tag :location, params[:location], id: 'placenow' %>
+                <%= label_tag('cost[]', "Price $") %>
+                <%= check_box_tag('cost[]', "1",{multiple: true})%>
+                <%= label_tag(:cost, "Price $$") %>
+                <%= check_box_tag('cost[]', "2", {multiple: true})%>
+                <%= label_tag(:cost, "Price $$$") %>
+                <%= check_box_tag('cost[]', "3", {multiple: true})%>
+                <%= label_tag(:filter, "Hot and new Places") %>
+                <%= check_box_tag('filter[]', "hot_and_new", {multiple: true})%>
+                <%= label_tag(:filter, "Reservations") %>
+                <%= check_box_tag('filter[]', "reservations", {multiple:true})%>
+                <%= label_tag(:filter, "Deals and Coupons") %>
+                <%= check_box_tag('filter[]', "deals", {multiple:true})%>
+                <%= label_tag(:miles_away, "Distance from current location") %>
+                <%= select_tag(:miles_away, options_for_select([[5,5], [10,10],[25,25]])) %>
+                <br>
+                <%= submit_tag 'filter'%>
               <% end %>
               </li>
           </ul>
+
+
+
+
 
 
         <%= yield %>
@@ -154,30 +174,10 @@
 
       </div>
 
-      <%= hidden_field_tag :location, params[:location], id: 'placenow' %>
-
-      <%= label_tag('cost[]', "Price $") %>
-      <%= check_box_tag('cost[]', "1",{multiple: true})%>
-      <%= label_tag(:cost, "Price $$") %>
-      <%= check_box_tag('cost[]', "2", {multiple: true})%>
-      <%= label_tag(:cost, "Price $$$") %>
-      <%= check_box_tag('cost[]', "3", {multiple: true})%>
-      <%= label_tag(:filter, "Hot and new Places") %>
-      <%= check_box_tag('filter[]', "hot_and_new", {multiple: true})%>
-      <%= label_tag(:filter, "Reservations") %>
-      <%= check_box_tag('filter[]', "reservations", {multiple:true})%>
-      <%= label_tag(:filter, "Deals and Coupons") %>
-      <%= check_box_tag('filter[]', "deals", {multiple:true})%>
-      <%= label_tag(:miles_away, "Distance from current location") %>
-      <%= select_tag(:miles_away, options_for_select([[5,5], [10,10],[25,25]])) %>
-      <br>
-      <%= submit_tag 'filter'%>
-    <% end %>
-  </li>
-</ul>
+    
 
 
-  <%= yield %>
+
 
 
         <div id="signin" class="modal">

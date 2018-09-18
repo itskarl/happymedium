@@ -93,6 +93,7 @@ class ApplicationController < ActionController::Base
     @event_desc = randevent['description']['text'].byteslice(0..150)
     @event_start = Time.parse(randevent['start']['local'])
     @event_end = Time.parse(randevent['end']['local'])
+    @event_free = randevent['is_free']
   end
 end
 
