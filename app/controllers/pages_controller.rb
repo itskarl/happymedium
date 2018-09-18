@@ -9,11 +9,12 @@ class PagesController < ApplicationController
 
     @event = Event.new
     @itinerary = Itinerary.new
-    @itinerary_index = Itinerary.all
-
+    # @itinerary_index = Itinerary.all
+    # @itinerary.events.build
 
   end
 
+  
 
 
 end
