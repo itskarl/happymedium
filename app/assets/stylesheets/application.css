@@ -15,6 +15,11 @@
  */
 
  /* RGB */
+
+ :root {
+font-weight: 400  
+ }
+
 .fullscreen-bg {
     position: fixed;
     top: 0;
