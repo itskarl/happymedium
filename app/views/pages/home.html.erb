@@ -1,48 +1,33 @@
 
-<%= form_tag(root_path, method: :get) do %>
-<%= label_tag('cost[]', "Price $") %>
-<%= check_box_tag('cost[]', "1",{multiple: true})%>
-<%= label_tag(:cost, "Price $$") %>
-<%= check_box_tag('cost[]', "2", {multiple: true})%>
-<%= label_tag(:cost, "Price $$$") %>
-<%= check_box_tag('cost[]', "3", {multiple: true})%>
-<%= label_tag(:filter, "Hot and new Places") %>
-<%= check_box_tag('filter[]', "hot_and_new", {multiple: true})%>
-<%= label_tag(:filter, "Reservations") %>
-<%= check_box_tag('filter[]', "reservations", {multiple:true})%><br>
-<%= submit_tag 'filter'%>
-<% end %>
+
+  <h1 class="section heading">Plan my Nite</h1>
+  <p class="section description">Sit back and let us "sort" your night out for you.</p>
 
 
 <div class="container">
-      <h1 class="section heading">Plan my Nite</h1>
-      <p class="section description">Sit back and let us "sort" your night out for you.</p>
       <div class="row">
         <div class="four columns category">
           <div class="event_text">
-            <%=image_tag "#{@loc_one_img}", {:style => "width: 100%; height: 40vh;  border: 4px inset rgba(222, 222, 222, 0.5);"}%>
+            <%=image_tag "#{@loc_one_img}"%>
             <div class="centered">
             <p><%=@loc_one%></p>
             <p>Address: <%=@address_one%></p>
-
             <p>Price:<%=@loc_one_price%></p>
-           
             <%= form_for( :event, :html => { :role => "form" }, url: events_path ) do |f| %>
               <%= f.hidden_field :name, value: @loc_one %>
               <%= f.hidden_field :address, value: @address_one %>
               <%= f.hidden_field :image_url, value: @loc_one_img %>
-<%= f.collection_select :itinerary_id, @itinerary_index, :id, :name, include_blank: true %>
+              <%= f.collection_select :itinerary_id, @itinerary_index, :id, :name, include_blank: true %>
               <%= f.submit "Add" %>
             <% end %>
-
-
-
             </div>
           </div>
         </div>
+
+
         <div class="four columns category">
           <div class="event_text">
-            <%=image_tag "#{@loc_two_img}", {:style => "width: 100%; height: 40vh; border: 4px inset rgba(222, 222, 222, 0.5);"}%>
+            <%=image_tag "#{@loc_two_img}"%>
             <div class="centered">
 
             <p><%=@loc_two%></p>
@@ -53,24 +38,30 @@
               <%= f.hidden_field :address, value: @address_one %>
               <%= f.hidden_field :image_url, value: @loc_one_img %>
             <%= f.collection_select :itinerary_id, @itinerary_index, :id, :name, include_blank: true %>
-
               <%= f.submit "Add" %>
             <% end %>
 
             </div>
           </div>
         </div>
+
+
         <div class="four columns category">
           <div class="event_text">
+
             <% randevent = @req['events'].sample  %>
             <img src="<%= randevent['logo']['url'] %>">
+              <div class="centered">
             <p>Event: <%= randevent['name']['text'] %></p>
             <p>Description: <%= randevent['description']['text'].byteslice(0..150) %></p>
             <p>Time: <%= randevent['start']['local'] %>
+
           </div>
         </div>
-      </div>
-    </div>
+
+
+  </div>
+</div>
 
     <div class="section">
     <%= form_for( :itinerary, :html => { :role => "form" }, url: itineraries_path ) do |f| %>
