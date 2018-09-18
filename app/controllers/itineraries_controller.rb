@@ -47,7 +47,8 @@ class ItinerariesController < ApplicationController
   private
 
   def itinerary_params
-    params.require(:itinerary).permit(:name)
+    params.require(:itinerary).permit(:name, 
+                                    events_attributes: [:id, :name, :address, :image_url])
   end
 
 end

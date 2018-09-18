@@ -195,6 +195,8 @@
     <%= check_box_tag('filter[]', "hot_and_new", {multiple: true})%></p>
         <p><%= label_tag(:filter, "Reservations") %>
     <%= check_box_tag('filter[]', "reservations", {multiple:true})%></p>
+    <%= label_tag(:miles_away, "Distance from current location") %>
+        <p><%= select_tag(:miles_away, options_for_select([[25,25],[10,10],[5,5]])) %></p>
 
       <div class="clearfix section">
         <%= submit_tag 'filter'%>

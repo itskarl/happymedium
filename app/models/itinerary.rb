@@ -1,9 +1,19 @@
 class Itinerary < ApplicationRecord
   after_initialize :set_default_name, unless: :persisted? 
+  after_update :save_events
   # JUST FOR NOW
   belongs_to :user, optional: true
-  has_many :events
+  has_many :events, :inverse_of => :itinerary
 
+  accepts_nested_attributes_for :events, :allow_destroy => true
+  validates_associated :events
+
+
+  def new_event_attributes=(event_attributes)
+    event_attributes.each do |attributes|
+      events.build(attributes)
+    end
+  end
 
   private 
 
@@ -13,5 +23,12 @@ class Itinerary < ApplicationRecord
   def set_default_name    
       self.name ||= "Itinerary" 
   end
+
+  def save_events 
+    events.each do |event|
+      event.save(false)
+    end
+  end
+
 
 end

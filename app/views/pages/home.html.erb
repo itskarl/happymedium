@@ -4,60 +4,64 @@
   <h1 class="section heading">Plan my Nite</h1>
   <p class="section description">Sit back and let us "sort" your night out for you.</p>
 
+<div class="section">
+    <%= form_for( :itinerary, :html => { :role => "form" }, url: itineraries_path ) do |itinerary| %>
 
+  <div class="container">
+        <div class="row">
+          <div class="four columns category">
+            <div class="event_text">
+              <%=image_tag "#{@loc_one_img}"%>
+              <div class="centered">
+              <p><%=@loc_one%></p>
+              <p>Address: <%=@address_one%></p>
+              <p>Price:<%=@loc_one_price%></p>
 
-<div class="container">
-      <div class="row">
-        <div class="four columns category">
-          <div class="event_text">
-            <%=image_tag "#{@loc_one_img}"%>
-            <div class="centered">
-            <p><%=@loc_one%></p>
-            <p>Address: <%=@address_one%></p>
-            <p>Price:<%=@loc_one_price%></p>
+              <p>Distance:<%=@loc_one_distance%></p>
+
 
             <p>Distance: <%=@loc_one_distance%> miles</p>
 
 
 
-            <%= form_for( :event, :html => { :role => "form" }, url: events_path ) do |f| %>
-              <%= f.hidden_field :name, value: @loc_one %>
-              <%= f.hidden_field :address, value: @address_one %>
-              <%= f.hidden_field :image_url, value: @loc_one_img %>
-              <%= f.collection_select :itinerary_id, @itinerary_index, :id, :name, include_blank: true %>
-              <%= f.submit "Add" %>
-            <% end %>
+              <% itinerary.fields_for :events do |f| %>
+                <%= f.hidden_field :name, value: @loc_one %>
+                <%= f.hidden_field :address, value: @address_one %>
+                <%= f.hidden_field :image_url, value: @loc_one_img %>
+              <% end %>
 
+              </div>
             </div>
           </div>
-        </div>
 
 
-        <div class="four columns category">
-          <div class="event_text">
-            <%=image_tag "#{@loc_two_img}"%>
-            <div class="centered">
+          <div class="four columns category">
+            <div class="event_text">
+              <%=image_tag "#{@loc_two_img}"%>
+              <div class="centered">
+
 
             <p><%=@loc_two%></p>
             <p>Address: <%=@address_two%></p>
             <p>Price: <%=@loc_two_price%></p>
             <p>Distance: <%=@loc_two_distance%> miles</p>
 
-            <%= form_for( :event, :html => { :role => "form" }, url: events_path ) do |f| %>
-              <%= f.hidden_field :name, value: @loc_two %>
-              <%= f.hidden_field :address, value: @address_two %>
-              <%= f.hidden_field :image_url, value: @loc_two_img %>
-            <%= f.collection_select :itinerary_id, @itinerary_index, :id, :name, include_blank: true %>
-              <%= f.submit "Add" %>
-            <% end %>
 
+              <%= itinerary.fields_for :events do |f| %>
+                <%= f.hidden_field :name, value: @loc_two %>
+                <%= f.hidden_field :address, value: @address_two %>
+                <%= f.hidden_field :image_url, value: @loc_two_img %>
+              
+              <% end %>
+
+              </div>
             </div>
           </div>
-        </div>
 
 
-        <div class="four columns category">
-          <div class="event_text">
+          <div class="four columns category">
+            <div class="event_text">
+
 
 
               <%=image_tag "#{@event_img}"%>
@@ -68,24 +72,22 @@
               <p>Time Start: <%= @event_start %> </p>
               <p>Time End: <%= @event_end %> </p>
               <p>Price is Free?: <%= @event_free %></p>
-              <%= form_for( :event, :html => { :role => "form" }, url: events_path ) do |f| %>
-                <%= f.hidden_field :name, value: @event_name %>
-                <%= f.hidden_field :image_url, value: @event_img %>
-                <%= f.collection_select :itinerary_id, @itinerary_index, :id, :name, include_blank: true %>
-                <%= f.submit "Add"%>
+                <%= itinerary.fields_for :events do |f| %>
+                  <%= f.hidden_field :name, value: @event_name %>
+                  <%= f.hidden_field :image_url, value: @event_img %>
+                  
               <% end %>
+
             </div>
           </div>
-        </div>
 
 
+    </div>
   </div>
-</div>
 
-    <div class="section">
-    <%= form_for( :itinerary, :html => { :role => "form" }, url: itineraries_path ) do |f| %>
-      <%= f.text_field :name, value: "", placeholder: 'Itinerary Name' %>
+    
+      <%= itinerary.text_field :name, value: "", placeholder: 'Itinerary Name' %>
       <br>
-      <input class="button-primary" <%= f.submit "Create" %>
+      <%= itinerary.submit "Create", class: "button-primary" %> 
     <% end %>
     </div>
