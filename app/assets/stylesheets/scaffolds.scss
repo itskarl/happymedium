@@ -43,6 +43,7 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   background: rgba(0, 0, 0, 0.5);
+  width: 80%;
 }
 
 .fa-user-circle:before {
@@ -72,6 +73,14 @@ li a {
   display: block;
   color: #E6E8E6;
   text-align: center;
+  text-decoration: none;
+}
+
+li p {
+  display: inline-block;
+  color: #E6E8E6;
+  text-align: center;
+  padding: 14px 16px;
   text-decoration: none;
 }
 

@@ -18,6 +18,7 @@
 
 var modal = document.getElementById('login');
 var modal = document.getElementById('signin');
+var modal = document.getElementById('advancesearch');
 
 window.onclick = function (event) {
     if (event.target == modal) {

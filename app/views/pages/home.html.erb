@@ -1,19 +1,23 @@
 
 
+
+  <h1 class="section heading">Plan my Nite</h1>
+  <p class="section description">Sit back and let us "sort" your night out for you.</p>
+
+
+
 <div class="container">
-      <h1 class="section heading">Plan my Nite</h1>
-      <p class="section description">Sit back and let us "sort" your night out for you.</p>
       <div class="row">
         <div class="four columns category">
           <div class="event_text">
-            <%=image_tag "#{@loc_one_img}", {:style => "width: 100%; height: 40vh;  border: 4px inset rgba(222, 222, 222, 0.5);"}%>
+            <%=image_tag "#{@loc_one_img}"%>
             <div class="centered">
             <p><%=@loc_one%></p>
             <p>Address: <%=@address_one%></p>
-
             <p>Price:<%=@loc_one_price%></p>
 
             <p>Distance:<%=@loc_one_distance%></p>
+
 
 
             <%= form_for( :event, :html => { :role => "form" }, url: events_path ) do |f| %>
@@ -27,9 +31,11 @@
             </div>
           </div>
         </div>
+
+
         <div class="four columns category">
           <div class="event_text">
-            <%=image_tag "#{@loc_two_img}", {:style => "width: 100%; height: 40vh; border: 4px inset rgba(222, 222, 222, 0.5);"}%>
+            <%=image_tag "#{@loc_two_img}"%>
             <div class="centered">
 
             <p><%=@loc_two%></p>
@@ -42,15 +48,17 @@
               <%= f.hidden_field :address, value: @address_two %>
               <%= f.hidden_field :image_url, value: @loc_two_img %>
             <%= f.collection_select :itinerary_id, @itinerary_index, :id, :name, include_blank: true %>
-
               <%= f.submit "Add" %>
             <% end %>
 
             </div>
           </div>
         </div>
+
+
         <div class="four columns category">
           <div class="event_text">
+
 
               <%=image_tag "#{@event_img}", {:style => "width: 100%; height: 40vh; border: 4px inset rgba(222, 222, 222, 0.5);"}%>
               <p>Event: <%= @event_name %></p>
@@ -64,10 +72,13 @@
                 <%= f.collection_select :itinerary_id, @itinerary_index, :id, :name, include_blank: true %>
                 <%= f.submit "Add"%>
               <% end %>
+
           </div>
         </div>
-      </div>
-    </div>
+
+
+  </div>
+</div>
 
     <div class="section">
     <%= form_for( :itinerary, :html => { :role => "form" }, url: itineraries_path ) do |f| %>
