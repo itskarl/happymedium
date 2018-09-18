@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 
-import Layout from './hoc/Layout/Layout';
-
 class App extends Component {
-    render() {
+    render () {
         return (
             <div>
-                <Layout />
+              <h1> HELLO WORLD </h1>
             </div>
         );
     }
 }
+
+
 
 export default App;

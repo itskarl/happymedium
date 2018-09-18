@@ -10,7 +10,10 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'index' %>    
+    <!-- React -->
+    <%= javascript_pack_tag 'application' %>
+
+  
 
     <!-- THIS SCRIPT CHANGES YOUR GEOLOCATION INTO A CITY NAME -->
     <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBRMuPVbAo3aTx8JfUFUlwDNqTHQdkdw3I"></script>
@@ -67,12 +70,14 @@
         });
       }
     </script>
+
   </head>
 
 
 
   <body onload="initialize()">
       <div id="root">
+      <!-- <%= react_component("App") %> -->
           <div class="fullscreen-bg">
           <video loop="loop" muted="muted" autoplay="autoplay" poster="img/videoframe.jpg" class="fullscreen-bg__video">
             <source src="sky.mp4" type="video/mp4">
