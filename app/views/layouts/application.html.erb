@@ -77,7 +77,6 @@
 
   <body onload="initialize()">
 
-      <div id="root">
       <!-- <%= react_component("App") %> -->
           <div class="fullscreen-bg">
           <video loop="loop" muted="muted" autoplay="autoplay" poster="img/videoframe.jpg" class="fullscreen-bg__video">
@@ -87,25 +86,28 @@
 
           <div class="city"></div>
 
-<br>
 
-<ul>
-  <li class="dropdown">
+          <ul>
 
-  <a class="active">Account</a>
-  <% if logged_in? %>
-  <a class="active"><%= current_user.first_name %></a>
-  <% end %>
+                <% if logged_in? %>
+                <li><%= link_to "Log Out", logout_path %></li>
+                <li><a href="<%= user_path(current_user.id) %>"><i class="fas fa-user-circle"></i>&nbsp<%= current_user.first_name %></a></li>
 
-  <div class="dropdown-content">
-      <a onclick="document.getElementById('login').style.display='block'">Log in</a>
-      <a onclick="document.getElementById('signin').style.display='block'">Sign Up</a>
-    </div>
+                <% else %>
+              <li class="dropdown">
+                <a class="active">Account</a>
+                  <div class="dropdown-content">
+                      <a onclick="document.getElementById('login').style.display='block'">Log in</a>
+                      <a onclick="document.getElementById('signin').style.display='block'">Sign Up</a>
+                  </div>
+              </li>
+                <% end %>
 
-    </li>
-  <li><a href="#">Plan My Nite</a></li>
-  <li><a href="#">Meeting Up</a></li>
-  <li><a href="#"><i class="fas fa-user-circle"></i></a></li>
+              <li><a href="<%= root_path %> ">Plan My Nite</a></li>
+              <li><a href="#">Meeting Up</a></li>
+ 
+
+
   <li style="float:right"><a onclick="document.getElementById('advancesearch').style.display='block'">Advance Search</a></li>
   <li style="float:right">
     <%= form_tag(root_path, method: :get) do %>
@@ -123,7 +125,7 @@
 
 
         <div id="login" class="modal">
-            <form class="modal-content animate" action="/action_page.php">
+            <%= form_for( :session, :html => { class: 'modal-content animate' }, url: login_path ) do |f| %>
               <div class="imgcontainer">
                 <span onclick="document.getElementById('login').style.display='none'" class="close" title="Close Modal">&times;</span>
                 <img src="img_avatar2.png" class="avatar">
@@ -133,10 +135,12 @@
                   <h5 class="section">Welcome Back</h5>
                   <hr>
                   <label for="username"><b>Username</b></label>
-                  <input class="fillmodal" type="text" placeholder="Enter Username" name="username" required>
+                  <%= f.text_field :username, autofocus: true, placeholder: 'Username', class: 'fillmodal', required: true %>
+  
 
-                  <label for="psw"><b>Password</b></label>
-                  <input class="fillmodal" type="password" placeholder="Enter Password" name="psw" required>
+                  <label for="password"><b>Password</b></label>
+                  <%= f.password_field :password, placeholder: 'Enter Password', class: 'fillmodal', required: true %>
+
 
                   <div class="clearfix section">
                       <button type="submit">Login</button>
@@ -145,47 +149,52 @@
                   </div>
 
               </div>
-            </form>
 
+            <% end %>
         </div>
 
       </div>
 
 
-
         <div id="signin" class="modal">
             <span onclick="document.getElementById('signin').style.display='none'" class="close" title="Close Modal">&times;</span>
-            <form class="modal-content" action="/action_page.php">
+            <%= form_for(:user, :html => { class: 'modal-content' }, url: users_path ) do |f| %>
                 <div class="container">
 
                     <h5 class="section">Sign Up</h5>
                     <hr>
                     <label for="first_name"><b>First Name</b></label>
-                    <input class="fillmodal" type="text" placeholder="First Name" name="first_name" required>
+                    <%= f.text_field :first_name, placeholder: 'First Name', class: 'fillmodal', required: true%>
+                    
 
                     <label for="last_name"><b>Last Name</b></label>
-                    <input class="fillmodal" type="text" placeholder="Last Name" name="last_name" required>
+                    <%= f.text_field :last_name, placeholder: 'Last Name', class: 'fillmodal', required: true %>
+            
 
                     <label for="username"><b>Username</b></label>
-                    <input class="fillmodal" type="text" placeholder="Username" name="username" required>
+                    <%= f.text_field :username, placeholder: 'Username', class: 'fillmodal', required: true %>
+
 
                     <label for="email"><b>Email</b></label>
-                    <input class="fillmodal" type="text" placeholder="Enter Email" name="email" required>
+                    <%= f.email_field :email, placeholder: 'Enter Email', class: 'fillmodal', required: true %>
+  
 
-                    <label for="psw"><b>Password</b></label>
-                    <input class="fillmodal" type="password" placeholder="Enter Password" name="psw" required>
+                    <label for="password"><b>Password</b></label>
+                    <%= f.password_field :password, placeholder: 'Enter Password', class: 'fillmodal', required: true %>
 
-                    <label for="psw-repeat"><b>Repeat Password</b></label>
-                    <input class="fillmodal" type="password" placeholder="Repeat Password" name="psw-repeat" required>
+
+                    <label for="password_confirmation"><b>Repeat Password</b></label>
+                    <%= f.password_field :password_confirmation, placeholder: 'Confirm Password', class: 'fillmodal', required: true %>
+
 
                     <div class="clearfix section">
                       <button type="button" onclick="document.getElementById('signin').style.display='none'" class="cancelbtn">Cancel</button>
                       <button type="submit" class="signupbtn">Sign Up</button>
                     </div>
-
                 </div>
-            </form>
+            <% end %>
         </div>
+
       </div>
 
 
