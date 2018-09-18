@@ -94,5 +94,6 @@ class ApplicationController < ActionController::Base
     @event_start = Time.parse(randevent['start']['local'])
     @event_end = Time.parse(randevent['end']['local'])
     @event_free = randevent['is_free']
+    @event_url = randevent['url'] 
   end
 end
