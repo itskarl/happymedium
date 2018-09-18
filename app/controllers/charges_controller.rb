@@ -12,6 +12,7 @@ class ChargesController < ApplicationController
     @amount = 5999
     # @current_email = current_user.email
 
+
     customer = Stripe::Customer.create(
       email: params[:stripeEmail],
       source: params[:stripeToken]
@@ -23,6 +24,7 @@ class ChargesController < ApplicationController
       description: 'Rails Stripe customer',
       currency: 'usd',
       # receipt_email: @current_email
+
     )
 
   rescue Stripe::CardError => e
