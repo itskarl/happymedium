@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-
   get 'sessions/new'
   resources :itineraries
   get 'itineraries/:id' => 'itineraries#show', as: 'itinerary_show'
   resources :events
+  resources :charges
 
   resources :users
   root 'pages#home'

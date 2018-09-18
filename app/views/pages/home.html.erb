@@ -26,7 +26,7 @@
             <p>Address: <%=@address_one%></p>
 
             <p>Price:<%=@loc_one_price%></p>
-          
+
             <%= form_for( :event, :html => { :role => "form" }, url: events_path ) do |f| %>
               <%= f.hidden_field :name, value: @loc_one %>
               <%= f.hidden_field :address, value: @address_one %>
@@ -86,4 +86,29 @@
     <% end %>
     </div>
 
+
+
+    <%= form_tag charges_path do %>
+      <article>
+        <% if flash[:error].present? %>
+          <div id="error_explanation">
+            <p><%= flash[:error] %></p>
+          </div>
+        <% end %>
+        <label class="amount">
+          <span>Amount: $59.99</span>
+        </label>
+      </article>
+
+      <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+              data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+              data-description="PERSONALIZED CONCIERGE"
+              data-name="HAPPILY MEDIUMLY"
+              data-amount="5999"
+              data-locale="auto"
+              data-image="http://weclipart.com/gimg/D58C047681898238/vacation_8-256.png"
+              ></script>
+    <% end %>
+
+<%= current_user.email %>
 
