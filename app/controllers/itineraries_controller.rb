@@ -6,7 +6,9 @@ class ItinerariesController < ApplicationController
   end
 
   def show
-
+    fetch_api_data
+    @itinerary = Itinerary.find(params[:id])
+    @events = @itinerary.events 
   end 
 
   def new
@@ -18,7 +20,7 @@ class ItinerariesController < ApplicationController
     respond_to do |format|
       if @itinerary.save
         p "Itinerary Created!"
-        format.html { redirect_to root_path }
+        format.html { redirect_to @itinerary }
       else
         p "Nope"
         format.html { render :new }
