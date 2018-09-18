@@ -16,7 +16,7 @@
             <p>Address: <%=@address_one%></p>
             <p>Price:<%=@loc_one_price%></p>
 
-            <p>Distance:<%=@loc_one_distance%></p>
+            <p>Distance: <%=@loc_one_distance%> miles</p>
 
 
 
@@ -40,8 +40,8 @@
 
             <p><%=@loc_two%></p>
             <p>Address: <%=@address_two%></p>
-            <p>Price:<%=@loc_two_price%></p>
-            <p><%=@loc_two_distance%></p>
+            <p>Price: <%=@loc_two_price%></p>
+            <p>Distance: <%=@loc_two_distance%> miles</p>
 
             <%= form_for( :event, :html => { :role => "form" }, url: events_path ) do |f| %>
               <%= f.hidden_field :name, value: @loc_two %>
@@ -63,7 +63,8 @@
               <%=image_tag "#{@event_img}"%>
               <div class="centered">
               <p>Event: <%= @event_name %></p>
-              <p>Description: <%= @event_desc %></p>
+              <p>Description: <%= @event_desc %>
+              &nbsp;...<a href="<%= @event_url %>">more</a></p>
               <p>Time Start: <%= @event_start %> </p>
               <p>Time End: <%= @event_end %> </p>
               <p>Price is Free?: <%= @event_free %></p>

@@ -17,9 +17,12 @@
  /* RGB */
 
  :root {
-font-weight: 400  
+font-weight: 400;
  }
 
+h1, h2, h3, h4, h5, p, a {
+  font-family: 'Rajdhani', sans-serif;
+}
 .fullscreen-bg {
     position: fixed;
     top: 0;
@@ -76,6 +79,7 @@ transform: translate(-50%,-50%);
     border-right: 1px solid #E6E8E6;
     border-bottom: 1px solid #E6E8E6;
     border-left: none;
+    margin-top: 6px;
 }
 
 /* .searchbar input[type=]{

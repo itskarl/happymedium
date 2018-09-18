@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :events
   resources :charges
 
+
   resources :users
   root 'pages#home'
 
@@ -12,6 +13,7 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   delete '/logout' => 'sessions#destroy'
   get '/logout' => 'sessions#destroy'
-
+  get '/meetup' => 'pages#meetup'
+  post '/meetup' => 'pages#meetup'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
