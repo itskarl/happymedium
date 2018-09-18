@@ -1,0 +1,30 @@
+<div class="concierge">
+<h3> HIRE A PERSONAL PLANNER! </h3>
+<img src="/croupier.png">
+<p>Have a bachelor party weekend coming up? Need help planning the perfect date? Want to check out a new city?
+  Let us do it for you!
+We have local experts around the world who can create a perfect itinerary for you.</p>
+<p>Only $59.99 for one day's perfectly curated itinerary!</p>
+<%= form_tag charges_path do %>
+  <article>
+    <% if flash[:error].present? %>
+      <div id="error_explanation">
+        <p><%= flash[:error] %></p>
+      </div>
+    <% end %>
+    <label class="amount">
+        <span> $59.99&nbsp;&nbsp;</span>
+    </label>
+  </article>
+
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+          data-description="PERSONALIZED CONCIERGE"
+          data-name="HAPPILY MEDIUMLY!"
+          data-amount="5999"
+          data-locale="auto"
+          data-image="/croupier.png"
+          data-zip-code="true">
+  </script>
+<% end %>
+</div>

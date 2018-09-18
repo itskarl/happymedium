@@ -11,6 +11,7 @@ class PagesController < ApplicationController
     @itinerary = Itinerary.new
     @itinerary_index = Itinerary.all
 
+
   end
 
 
