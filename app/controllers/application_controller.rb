@@ -116,7 +116,7 @@ class ApplicationController < ActionController::Base
     @data.first[1].count
 
 
-    event_brite_loc = @address_one.gsub(/\W/, '-') unless @address_one.nil?
+    event_brite_loc = @locationOne['location']['city'].gsub(/\W/, '-') unless @locationOne.nil?
     @datae = Curl::Easy.perform("https://www.eventbriteapi.com/v3/events/search/?q=#{query}&sort_by=best&location.address=#{event_brite_loc}&price=#{event_cost}&start_date.range_start=#{event_day}&start_date.range_end=#{event_day}&token=FGTPMLNV7K6MQVZZCC6S")
 
 
