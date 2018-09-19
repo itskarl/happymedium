@@ -11,7 +11,7 @@ class ChargesController < ApplicationController
 
     render layout: "application"
     # Amount in cents
-    @amount = 5999
+    @amount = params[:dollars]
     # @current_email = current_user.email if current_user
 
     customer = Stripe::Customer.create(
