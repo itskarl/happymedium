@@ -13,11 +13,15 @@ class ItinerariesController < ApplicationController
 
   def new
     @itinerary = Itinerary.new
+    @itinerary.events.build
+
   end
 
   def create 
     @itinerary = Itinerary.new(itinerary_params)
     current_user = session[:user_id]
+    p itinerary_params 
+    p itinerary_params[:events_attributes]
     if current_user
       @itinerary.user_id = current_user
     end
@@ -27,7 +31,7 @@ class ItinerariesController < ApplicationController
         format.html { redirect_to @itinerary }
       else
         p "Nope"
-        format.html { render :new }
+        format.html { redirect_to root_path }
       end
     end
   end
@@ -47,8 +51,8 @@ class ItinerariesController < ApplicationController
   private
 
   def itinerary_params
-    params.require(:itinerary).permit(:name, 
-                                    events_attributes: [:id, :name, :address, :image_url])
+    params.require(:itinerary).permit(:name, events_attributes: [:name, :address, :image_url])
   end
+
 
 end

@@ -5,7 +5,7 @@
   <p class="section description">Sit back and let us "sort" your night out for you.</p>
 
 <div class="section">
-    <%= form_for( :itinerary, :html => { :role => "form" }, url: itineraries_path ) do |itinerary| %>
+    <%= form_for( @itinerary ) do |i| %>
 
   <div class="container">
         <div class="row">
@@ -24,12 +24,13 @@
 
 
 
-              <% itinerary.fields_for :events do |f| %>
+              <%= i.fields_for :events  do |f| %>
                 <%= f.hidden_field :name, value: @loc_one %>
                 <%= f.hidden_field :address, value: @address_one %>
                 <%= f.hidden_field :image_url, value: @loc_one_img %>
+                
               <% end %>
-
+            
               </div>
             </div>
           </div>
@@ -47,7 +48,7 @@
             <p>Distance: <%=@loc_two_distance%> miles</p>
 
 
-              <%= itinerary.fields_for :events do |f| %>
+              <%= i.fields_for :events do |f| %>
                 <%= f.hidden_field :name, value: @loc_two %>
                 <%= f.hidden_field :address, value: @address_two %>
                 <%= f.hidden_field :image_url, value: @loc_two_img %>
@@ -72,7 +73,7 @@
               <p>Time Start: <%= @event_start %> </p>
               <p>Time End: <%= @event_end %> </p>
               <p>Price is Free?: <%= @event_free %></p>
-                <%= itinerary.fields_for :events do |f| %>
+                <%= i.fields_for :events do |f| %>
                   <%= f.hidden_field :name, value: @event_name %>
                   <%= f.hidden_field :image_url, value: @event_img %>
                   
@@ -86,8 +87,8 @@
   </div>
 
     
-      <%= itinerary.text_field :name, value: "", placeholder: 'Itinerary Name' %>
+      <%= i.text_field :name, value: "", placeholder: 'Itinerary Name' %>
       <br>
-      <%= itinerary.submit "Create", class: "button-primary" %> 
+      <%= i.submit "Create", class: "button-primary" %> 
     <% end %>
     </div>
