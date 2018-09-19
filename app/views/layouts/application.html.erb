@@ -106,7 +106,7 @@
     <% end %>
   <li><a href="<%= root_path %> ">Plan My Nite</a></li>
   <li><a href="/charges/new">Concierge</a></li>
-  <li style="float:right"><a onclick="document.getElementById('advancesearch').style.display='block'">Advance Search</a></li>
+  <li style="float:right; cursor:pointer"><a onclick="document.getElementById('advancesearch').style.display='block'">Advance Search</a></li>
   <li style="float:right">
     <%= form_tag(root_path, method: :get) do %>
     <div class="searchbar">

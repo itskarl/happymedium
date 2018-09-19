@@ -114,6 +114,7 @@ li a:hover,
 
 li.dropdown {
   display: inline-block;
+  cursor: pointer;
 }
 
 .dropdown-content {
@@ -137,6 +138,7 @@ li.dropdown {
 
 .dropdown:hover .dropdown-content {
   display: block;
+  cursor: pointer;
 }
 
 
