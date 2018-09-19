@@ -1,11 +1,10 @@
 
-
-
-
+<div class="meetup-form">
 <%= form_tag('/meetup', controller: 'pages', action: 'meetup') do  %>
 <%= text_field_tag :address1 %>
 <%= text_field_tag :address2 %>
 <%= submit_tag %>
 <% end %>
+</div>
 
-<%= @meet_data.first if @meet_data %>
+<% middle_location = @meet_data.sample if @meet_data %>

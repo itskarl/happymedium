@@ -28,15 +28,13 @@ class PagesController < ApplicationController
       url: "https://api.yelp.com/v3/businesses/search?latitude=#{new_lat}&longitude=#{new_long}&open_now=true&limit=20&radius=1609",
       headers: { 'Authorization' => 'Bearer N8S3U6LDLLsusNB1-x8lUUwT6VzK8Vrz_jVDrcHKceg6GdJl7--ETsNeFQ1VBFG39Vy_aPd3NuKSBXln5XdH43hbescROWi4NKTPok0KEkxDXsisrsdU7kOJ-KaaW3Yx' }
     )
-
     @meet_data = JSON.parse(@meet_response)
-    
     end
 
 
   end
 
-  
+
 
 
 end
