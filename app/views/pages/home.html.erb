@@ -1,6 +1,7 @@
 
-
-
+  <p><%=@weather_description%></p>
+  <p><%=@weather_time%></p>
+  <p><%=@weather_day_two%></p>
   <h1 class="section heading">Plan my Nite</h1>
   <p class="section description">Sit back and let us "sort" your night out for you.</p>
 
@@ -51,7 +52,7 @@
                 <%= f.hidden_field :name, value: @loc_two %>
                 <%= f.hidden_field :address, value: @address_two %>
                 <%= f.hidden_field :image_url, value: @loc_two_img %>
-              
+
               <% end %>
 
               </div>
@@ -75,7 +76,7 @@
                 <%= itinerary.fields_for :events do |f| %>
                   <%= f.hidden_field :name, value: @event_name %>
                   <%= f.hidden_field :image_url, value: @event_img %>
-                  
+
               <% end %>
 
             </div>
@@ -85,9 +86,9 @@
     </div>
   </div>
 
-    
+
       <%= itinerary.text_field :name, value: "", placeholder: 'Itinerary Name' %>
       <br>
-      <%= itinerary.submit "Create", class: "button-primary" %> 
+      <%= itinerary.submit "Create", class: "button-primary" %>
     <% end %>
     </div>

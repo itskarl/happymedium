@@ -197,6 +197,7 @@
     <%= check_box_tag('filter[]', "reservations", {multiple:true})%></p>
     <%= label_tag(:miles_away, "Distance from current location") %>
         <p><%= select_tag(:miles_away, options_for_select([['25',24],['10',10],['5',5]])) %></p>
+    <%= select_tag(:day, options_for_select([['Today',0],['Tomorrow', 8],[ @day3,16],[@day4,24],[@day5,32]]))%>
 
       <div class="clearfix section">
         <%= submit_tag 'filter'%>

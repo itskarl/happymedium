@@ -8,10 +8,34 @@ class ApplicationController < ActionController::Base
     cost = []
     loc_miles = params[:miles_away].to_i/0.00062137 if !params[:miles_away].nil?
     event_miles = params[:miles_away]
-    p loc_miles
-    p params[:miles_away]
+    # p loc_miles
+    # p params[:miles_away]
+
+    #Searching by Date---
+    today = Date.today()
+    p Time.now + 3.days
+    @day3 = (today+2).strftime('%m/%d/%C')
+    @day4 = (today+3).strftime('%m/%d/%C')
+    @day5 = (today+4).strftime('%m/%d/%C')
     event_cost = ''
 
+      if params[:day].nil? || params[:day] == '0'
+        day = 0
+        p event_day = Time.now.utc
+      elsif params[:day] == '8'
+        day = params[:day].to_i
+        p event_day = (Time.now + 1.day)
+      elsif params[:day] == '16'
+        day = params[:day].to_i
+        p event_day = Time.now + 2.days
+      elsif params[:day] == '24'
+        day = params[:day].to_i
+        p event_day = Time.now + 3.days
+      elsif params[:day] == '32'
+        day = params[:day].to_i
+        p event_day = Time.now + 4.days
+      end
+    #---------
       if params[:filter].nil?
         filter = ''
       else
@@ -90,16 +114,25 @@ class ApplicationController < ActionController::Base
     @data.first[1].count
 
     event_brite_loc = @address_one.gsub(/\W/, '-') unless @address_one.nil?
-    @datae = Curl::Easy.perform("https://www.eventbriteapi.com/v3/events/search/?q=#{query}&sort_by=best&location.address=#{event_brite_loc}&price=#{event_cost}&token=FGTPMLNV7K6MQVZZCC6S")
+    @datae = Curl::Easy.perform("https://www.eventbriteapi.com/v3/events/search/?q=#{query}&sort_by=best&location.address=#{event_brite_loc}&price=#{event_cost}&start_date.range_start=2018-10-13T10%3A00%3A00&token=FGTPMLNV7K6MQVZZCC6S")
 
     @req = JSON.parse(@datae.body_str)
     randevent = @req['events'].sample
-    @event_img = randevent['logo']['url']
+    @event_img = randevent['logo']['url'] if !randevent['logo']['url'].nil?
     @event_name = randevent['name']['text']
-    @event_desc = randevent['description']['text'].byteslice(0..150)
+    @event_desc = randevent['description']['text'].byteslice(0..150) unless randevent['description']['text'].byteslice(0..150).nil?
     @event_start = (Time.parse(randevent['start']['local'])).strftime('%B, %d %Y %l:%M%P')
     @event_end = (Time.parse(randevent['end']['local'])).strftime('%B, %d %Y %l:%M%P')
     @event_free = randevent['is_free']
     @event_url = randevent['url']
+
+    #weather-------
+    @weather_response = Curl::Easy.perform("api.openweathermap.org/data/2.5/forecast?lat=40.707984&lon=-74.006486&APPID=89e45d236787c5dece4d491bbac3120b")
+    @weather_data = JSON.parse(@weather_response.body_str)
+    @weather_description = @weather_data['list'][day]['weather'][0]['description']
+    @weather_time = (Time.parse(@weather_data['list'][day]['dt_txt'])).strftime('%m/%d/%C %I:%M%p')
+
+    # @weather_temp =
+
   end
 end
