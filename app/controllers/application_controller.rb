@@ -21,19 +21,19 @@ class ApplicationController < ActionController::Base
 
       if params[:day].nil? || params[:day] == '0'
         day = 0
-        p event_day = Time.now.utc
+        p event_day = Time.now.utc.iso8601
       elsif params[:day] == '8'
         day = params[:day].to_i
-        p event_day = (Time.now + 1.day)
+        p event_day = (Time.now + 1.day).utc.iso8601
       elsif params[:day] == '16'
         day = params[:day].to_i
-        p event_day = Time.now + 2.days
+        p event_day = (Time.now + 2.days).utc.iso8601
       elsif params[:day] == '24'
         day = params[:day].to_i
-        p event_day = Time.now + 3.days
+        p event_day = (Time.now + 3.days).utc.iso8601
       elsif params[:day] == '32'
         day = params[:day].to_i
-        p event_day = Time.now + 4.days
+        p event_day = (Time.now + 4.days).utc.iso8601
       end
     #---------
       if params[:filter].nil?
@@ -114,7 +114,7 @@ class ApplicationController < ActionController::Base
     @data.first[1].count
 
     event_brite_loc = @address_one.gsub(/\W/, '-') unless @address_one.nil?
-    @datae = Curl::Easy.perform("https://www.eventbriteapi.com/v3/events/search/?q=#{query}&sort_by=best&location.address=#{event_brite_loc}&price=#{event_cost}&start_date.range_start=2018-10-13T10%3A00%3A00&token=FGTPMLNV7K6MQVZZCC6S")
+    @datae = Curl::Easy.perform("https://www.eventbriteapi.com/v3/events/search/?q=#{query}&sort_by=best&location.address=#{event_brite_loc}&price=#{event_cost}&start_date.range_start=#{event_day}&start_date.range_end=#{event_day}&token=FGTPMLNV7K6MQVZZCC6S")
 
     @req = JSON.parse(@datae.body_str)
     randevent = @req['events'].sample
