@@ -113,7 +113,7 @@ class ApplicationController < ActionController::Base
     @loc_two_distance = (@locationTwo['distance'] * 0.00062137).round(2)
     @data.first[1].count
 
-    event_brite_loc = @address_one.gsub(/\W/, '-') unless @address_one.nil?
+    p event_brite_loc = @locationOne['location']['city'].gsub(/\W/, '-') unless @address_one.nil?
     @datae = Curl::Easy.perform("https://www.eventbriteapi.com/v3/events/search/?q=#{query}&sort_by=best&location.address=#{event_brite_loc}&price=#{event_cost}&start_date.range_start=2018-10-13T10%3A00%3A00&token=FGTPMLNV7K6MQVZZCC6S")
 
     @req = JSON.parse(@datae.body_str)
