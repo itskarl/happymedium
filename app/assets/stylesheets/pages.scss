@@ -1,3 +1,51 @@
 // Place all the styles related to the Pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+a.infotag {
+	color: #E6E8E6;
+	display: block;
+	overflow: hidden;
+    cursor: pointer;
+    
+}
+
+.info {
+    z-index: 2;
+    height: 3em;
+    transition: all .5s ease;
+    margin: 0;
+    padding-top: 5%;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    background: linear-gradient(to bottom, #4b4176 0%, #63569c 50%, #634176 100%);
+    transform: translate(-50%, -50%);
+    width: 80%;
+}
+
+.info:hover {
+    background-color: linear-gradient(to bottom, #4b4176 0%, #63569c 50%, #634176 100%);
+     transition: all .5s ease;
+     height: auto;
+}
+a:hover .info {
+    transition: all .5s ease;
+    background-color: linear-gradient(to bottom, #4b4176 0%, #63569c 50%, #634176 100%);
+}
+
+p {
+    opacity: 0;
+    visibility: hidden;
+    margin: 5px;
+    line-height: 1.5em;
+
+}
+
+a:hover p {
+    opacity: 1;
+    visibility: visible;
+    transition: all .5s ease;
+}

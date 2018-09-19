@@ -11,7 +11,6 @@ body {
 
 }
 
-
 .content {
   position: relative;
   z-index: 5;
@@ -25,7 +24,6 @@ body {
 .event_text {
   position: relative;
   text-align: center;
-  color: #E6E8E6;
 }
 
 
@@ -36,7 +34,7 @@ body {
 
 .centered {
   margin: 0;
-  border: 4px inset rgba(222, 222, 222, 0.5);
+  border: 1px solid rgba(222, 222, 222, 0.5);
   padding-top: 5%;
   position: absolute;
   top: 50%;
@@ -44,19 +42,6 @@ body {
   transform: translate(-50%, -50%);
   background: rgba(0, 0, 0, 0.5);
   width: 80%;
-}
-
-#target {
-  background: #0099cc;
-  width: 300px;
-  height: 300px;
-  height: 160px;
-  padding: 5px;
-  display: none;
-}
-
-.Hide {
-  display: none;
 }
 
 .fa-user-circle:before {
@@ -83,6 +68,8 @@ body {
   justify-content: center;
   width: 40px;
 }
+
+
 li a {
   display: block;
   color: #E6E8E6;

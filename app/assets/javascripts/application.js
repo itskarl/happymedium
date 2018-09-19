@@ -30,23 +30,6 @@ window.onclick = function (event) {
 }
 
 
-
-$('.Show').mouseover(function () {
-    $('.centered').show(250);
-    $('.Show').hide(0);
-    $('.Hide').show(0);
-});
-$('.Hide').mouseover(function () {
-    $('#target').hide(150);
-    $('.Show').show(0);
-    $('.Hide').hide(0);
-});
-$('.toggle').mouseover(function () {
-    $('#target').toggle('slow');
-});
-
-
-
 $(document).ready(function () {
 
     console.log('ahhhh')
