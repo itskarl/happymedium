@@ -12,7 +12,9 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link href="https://fonts.googleapis.com/css?family=Rajdhani" rel="stylesheet">
     <!-- React -->
-    <!-- <#%= javascript_pack_tag 'application' %> -->
+    <!-- <%= javascript_pack_tag 'index' %>
+    <%= stylesheet_pack_tag 'index'%> -->
+
 
 
 
@@ -78,7 +80,6 @@
 
   <body onload="initialize()">
 
-      <!-- <%= react_component("App") %> -->
           <div class="fullscreen-bg">
           <video loop="loop" muted="muted" autoplay="autoplay" poster="img/videoframe.jpg" class="fullscreen-bg__video">
             <source src="sky.mp4" type="video/mp4">
@@ -104,8 +105,9 @@
   </li>
     <% end %>
   <li><a href="<%= root_path %> ">Plan My Nite</a></li>
-  <li><a href="charges/new">Concierge</a></li>
-  <li style="float:right"><a onclick="document.getElementById('advancesearch').style.display='block'">Advance Search</a></li>
+  <li><a href="/charges/new">Concierge</a></li>
+  <li><a href="/meetup">Meetup</a></li>
+  <li style="float:right; cursor:pointer"><a onclick="document.getElementById('advancesearch').style.display='block'">Advance Search</a></li>
   <li style="float:right">
     <%= form_tag(root_path, method: :get) do %>
     <div class="searchbar">
@@ -207,7 +209,6 @@
     </div>
   </form>
 </div>
-
 
 
   </body>

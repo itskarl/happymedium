@@ -126,6 +126,7 @@ class ApplicationController < ActionController::Base
     @event_free = randevent['is_free']
     @event_url = randevent['url']
 
+
     #weather-------
     @weather_response = Curl::Easy.perform("api.openweathermap.org/data/2.5/forecast?lat=40.707984&lon=-74.006486&APPID=89e45d236787c5dece4d491bbac3120b")
     @weather_data = JSON.parse(@weather_response.body_str)
@@ -133,6 +134,7 @@ class ApplicationController < ActionController::Base
     @weather_time = (Time.parse(@weather_data['list'][day]['dt_txt'])).strftime('%m/%d/%C %I:%M%p')
 
     # @weather_temp =
+
 
   end
 end
