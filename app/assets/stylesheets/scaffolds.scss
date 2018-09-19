@@ -46,6 +46,19 @@ body {
   width: 80%;
 }
 
+#target {
+  background: #0099cc;
+  width: 300px;
+  height: 300px;
+  height: 160px;
+  padding: 5px;
+  display: none;
+}
+
+.Hide {
+  display: none;
+}
+
 .fa-user-circle:before {
   content: "\f2bd";
   font-size: large;

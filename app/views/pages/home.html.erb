@@ -61,27 +61,14 @@
 
           <div class="four columns category">
             <div class="event_text">
-
-
-
               <%=image_tag "#{@event_img}"%>
-              <div class="centered">
-              <p>Event: <%= @event_name %></p>
-              <p>Description: <%= @event_desc %>
-              &nbsp;...<a href="<%= @event_url %>">more</a></p>
-              <p>Time Start: <%= @event_start %> </p>
-              <p>Time End: <%= @event_end %> </p>
-              <p>Price is Free?: <%= @event_free %></p>
-                <%= itinerary.fields_for :events do |f| %>
-                  <%= f.hidden_field :name, value: @event_name %>
-                  <%= f.hidden_field :image_url, value: @event_img %>
-                  
-              <% end %>
 
-            </div>
+<button class="Show">Show</button>
+<button class="Hide">Hide</button>
+<div id="target"> stuff in here</div>
+
+
           </div>
-
-
     </div>
   </div>
 
