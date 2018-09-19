@@ -1,10 +1,93 @@
+<div class="meetup-page">
+  <div class="meetup-form">
+    <center>
+      <h2>MEETUP TOOL &nbsp;<i class="fas fa-street-view"></i>
+      </h2>
+      <span>
+        <legend class="form__question">FIND THE PERFECT EQUIDISTANT LOCATION BETWEEN YOU AND A FRIEND!
+        </legend>
+        <br>
+        <%= form_tag('/meetup', controller: 'pages', action: 'meetup') do %>
+        ADDRESS ONE:&nbsp;&nbsp;
+        <%= text_field_tag :address1, request.location.city %><br>
+        ADDRESS TWO:&nbsp;&nbsp;
+        <%= text_field_tag :address2 %>
+      </span>
+      <br>
+      <br>
 
-<div class="meetup-form">
-<%= form_tag('/meetup', controller: 'pages', action: 'meetup') do  %>
-<%= text_field_tag :address1 %>
-<%= text_field_tag :address2 %>
-<%= submit_tag %>
-<% end %>
+      <fieldset class="form__options">
+        <legend class="form__question">MEETING TYPE:
+        </legend>
+
+        <p class="form__answer">
+          <input type="radio" name="meettype" id="meettype_1" value="romantic" checked="checked">
+          <label for="meettype_1">
+            <i class="fas fa-heart"></i>
+          </label>
+        </p>
+
+        <p class="form__answer">
+          <input type="radio" name="meettype" id="meettype_2" value="coffee">
+          <label for="meettype_2">
+            <i class="fas fa-coffee"></i>
+          </label>
+        </p>
+
+        <p class="form__answer">
+          <input type="radio" name="meettype" id="meettype_3" value="dinner">
+          <label for="meettype_3">
+
+            <i class="far fa-moon"></i>&nbsp;<i class="fas fa-utensils"></i>
+          </label>
+        </p>
+
+        <p class="form__answer">
+          <input type="radio" name="meettype" id="meettype_4" value="LUNCH">
+          <label for="meettype_4">
+
+            <i class="fas fa-sun"></i>&nbsp;<i class="fas fa-utensils"></i>
+          </label>
+        </p>
+
+        <p class="form__answer">
+          <input type="radio" name="meettype" id="meettype_5" value="drinks">
+          <label for="meettype_5">
+            <i class="fas fa-cocktail"></i>
+          </label>
+        </p>
+
+      </fieldset>
+
+      <%= submit_tag "SEARCH!"%>
+    <% end %>
+  </center>
 </div>
 
-<% middle_location = @meet_data.sample if @meet_data %>
+<% if @meet_data %>
+
+  <div class="meetup-selects">
+    <%  middlelocation = @meet_data.first[1].sample %>
+      <div class="meetup-select-one">
+        <div>
+          <h4><%= middlelocation['name'] %></h4>
+          <img src="<%= middlelocation['image_url']  %>">
+          <p>&nbsp;</p>
+        </div>
+        <div>
+          <h4>&nbsp;</h4>
+        <iframe
+          width="200"
+          height="200"
+          frameborder="0"
+          style="border:0"
+          src="https://www.google.com/maps/embed/v1/search?q=<%= middlelocation['location']['display_address'][0] %>&key=AIzaSyCNbacb2nTqhHODHvlf5pCt7jYWi93YU6Y"
+          allowfullscreen="allowfullscreen"></iframe>
+
+                <p><%= middlelocation['location']['display_address'][0] %></p>
+                  <% end %>
+        </div>
+
+    </div>
+  </div>
+</div>
