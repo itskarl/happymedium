@@ -21,10 +21,10 @@ class ApplicationController < ActionController::Base
 
       if params[:day].nil? || params[:day] == '0'
         day = 0
-        p event_day = Time.now.utc
+        p event_day = DateTime.now
       elsif params[:day] == '8'
         day = params[:day].to_i
-        p event_day = (Time.now + 1.day)
+        p event_day = (DateTime.now + 1.day)
       elsif params[:day] == '16'
         day = params[:day].to_i
         p event_day = Time.now + 2.days
@@ -79,7 +79,7 @@ class ApplicationController < ActionController::Base
       @response = RestClient::Request.execute(
         method: :get,
 
-        url: "https://api.yelp.com/v3/businesses/search?term=#{query}&location=new+york&open_now=true&limit=5&price=#{cost[0]},#{cost[1]}&#{filter[0]},#{filter[1]},#{filter[2]}&radius=#{loc_miles.to_i}",
+        url: "https://api.yelp.com/v3/businesses/search?term=#{query}&location=#{destination}&open_now=true&limit=5&price=#{cost[0]},#{cost[1]}&#{filter[0]},#{filter[1]},#{filter[2]}&radius=#{loc_miles.to_i}",
 
         headers: { 'Authorization' => 'Bearer N8S3U6LDLLsusNB1-x8lUUwT6VzK8Vrz_jVDrcHKceg6GdJl7--ETsNeFQ1VBFG39Vy_aPd3NuKSBXln5XdH43hbescROWi4NKTPok0KEkxDXsisrsdU7kOJ-KaaW3Yx' }
       )
@@ -87,7 +87,7 @@ class ApplicationController < ActionController::Base
       @response = RestClient::Request.execute(
         method: :get,
 
-        url: "https://api.yelp.com/v3/businesses/search?term=#{query}&location=new+york&open_now=true&limit=50&price=#{cost[0]}&#{filter[0]},#{filter[1]},#{filter[2]}&radius=#{loc_miles.to_i}",
+        url: "https://api.yelp.com/v3/businesses/search?term=#{query}&location=#{destination}&open_now=true&limit=50&price=#{cost[0]}&#{filter[0]},#{filter[1]},#{filter[2]}&radius=#{loc_miles.to_i}",
 
         headers: { 'Authorization' => 'Bearer N8S3U6LDLLsusNB1-x8lUUwT6VzK8Vrz_jVDrcHKceg6GdJl7--ETsNeFQ1VBFG39Vy_aPd3NuKSBXln5XdH43hbescROWi4NKTPok0KEkxDXsisrsdU7kOJ-KaaW3Yx' }
       )
