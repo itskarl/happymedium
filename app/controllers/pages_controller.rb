@@ -22,15 +22,23 @@ class PagesController < ApplicationController
 
     meetingt = params[:meettype]
     p params[:meettype]
-    @meet_response = RestClient::Request.execute(
-      method: :get,
-      url: "https://api.yelp.com/v3/businesses/search?term=#{meetingt}&latitude=#{new_lat}&longitude=#{new_long}&open_now=true&limit=20&radius=1609",
-      headers: { 'Authorization' => 'Bearer N8S3U6LDLLsusNB1-x8lUUwT6VzK8Vrz_jVDrcHKceg6GdJl7--ETsNeFQ1VBFG39Vy_aPd3NuKSBXln5XdH43hbescROWi4NKTPok0KEkxDXsisrsdU7kOJ-KaaW3Yx' }
-    )
-    @meet_data = JSON.parse(@meet_response)
+
+    radius = 0
+    @meet_response = nil
+
+    until @middlelocation != nil
+      @meet_response = RestClient::Request.execute(
+        method: :get,
+        url: "https://api.yelp.com/v3/businesses/search?term=#{meetingt}&latitude=#{new_lat}&longitude=#{new_long}&open_now=true&limit=20&radius=#{radius}",
+        headers: { 'Authorization' => 'Bearer N8S3U6LDLLsusNB1-x8lUUwT6VzK8Vrz_jVDrcHKceg6GdJl7--ETsNeFQ1VBFG39Vy_aPd3NuKSBXln5XdH43hbescROWi4NKTPok0KEkxDXsisrsdU7kOJ-KaaW3Yx' }
+      )
+      p @meet_response
+      radius += 1609
+      p radius
+      @meet_data = JSON.parse(@meet_response)
+      @middlelocation = @meet_data.first[1].sample
     end
-
-
+    end
   end
 
 

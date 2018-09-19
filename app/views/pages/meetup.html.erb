@@ -4,7 +4,7 @@
       <h2>MEETUP TOOL &nbsp;<i class="fas fa-street-view"></i>
       </h2>
       <span>
-        <legend class="form__question">FIND THE PERFECT EQUIDISTANT LOCATION BETWEEN YOU AND A FRIEND!
+        <legend class="form__question">FIND THE PERFECT LOCATION EXACTLY BETWEEN YOU AND A FRIEND!
         </legend>
         <br>
         <%= form_tag('/meetup', controller: 'pages', action: 'meetup') do %>
@@ -64,27 +64,28 @@
   </center>
 </div>
 
-<% if @meet_data %>
+<% if @meet_data && @meet_data != nil %>
 
   <div class="meetup-selects">
-    <%  middlelocation = @meet_data.first[1].sample %>
+  
+    <h4><%= @middlelocation['name'].upcase %></h4>
       <div class="meetup-select-one">
         <div>
-          <h4><%= middlelocation['name'] %></h4>
-          <img src="<%= middlelocation['image_url']  %>">
-          <p>&nbsp;</p>
+
+          <img src="<%= @middlelocation['image_url']  %>">
+          <p><a href="<%= @middlelocation['url']%>">MORE INFO</a></p>
         </div>
         <div>
-          <h4>&nbsp;</h4>
+
         <iframe
           width="200"
           height="200"
           frameborder="0"
           style="border:0"
-          src="https://www.google.com/maps/embed/v1/search?q=<%= middlelocation['location']['display_address'][0] %>&key=AIzaSyCNbacb2nTqhHODHvlf5pCt7jYWi93YU6Y"
+          src="https://www.google.com/maps/embed/v1/search?q=<%= @middlelocation['location']['display_address'][0] %><%=@middlelocation['name'].gsub!(/[!@%&"]/,'')%>&key=AIzaSyCNbacb2nTqhHODHvlf5pCt7jYWi93YU6Y"
           allowfullscreen="allowfullscreen"></iframe>
 
-                <p><%= middlelocation['location']['display_address'][0] %></p>
+                <p><%= @middlelocation['location']['display_address'][0] %></p>
                   <% end %>
         </div>
 

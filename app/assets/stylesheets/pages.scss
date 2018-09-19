@@ -13,31 +13,34 @@
 }
 
 .meetup-form{
-  max-width: 610px;
+  width: 500;
   margin: 10px auto;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: rgba(0, 0, 0, 0.58);
   padding: 40px 20px 0 20px;
+  box-sizing: border-box;
 }
 
 .meetup-selects{
-  max-width: 610px;
+  width: 500px;
   margin: 10px auto;
   display: flex;
-  display: grid;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   background-color: rgba(0, 0, 0, 0.58);
   padding: 40px 20px 0 20px;
+  box-sizing: border-box;
 
 }
 
 .meetup-selects img {
   width: 200px;
   height: 200px;
-  border: none;
+  object-fit: cover;
+  border:none;
 }
 
 .meetup-select-one {
@@ -53,7 +56,7 @@
 
 .meetup-select-one h4 {
   margin: 0;
-
+  line-height: 0;
 
 }
 
