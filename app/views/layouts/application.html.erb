@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Startup</title>
+    <title>PLAN MY NIGHT</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
@@ -11,6 +11,8 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link href="https://fonts.googleapis.com/css?family=Rajdhani" rel="stylesheet">
+    <link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <!-- React -->
     <!-- <%= javascript_pack_tag 'index' %>
     <%= stylesheet_pack_tag 'index'%> -->
@@ -94,7 +96,7 @@
 
     <% if logged_in? %>
     <li><%= link_to "Log Out", logout_path %></li>
-    <li><a href="<%= user_path(current_user.id) %>"><i class="fas fa-user-circle"></i>&nbsp<%= current_user.first_name %></a>
+    <li><a href="<%= user_path(current_user.id) %>"><i class="fas fa-user-circle"></i>&nbsp;<%= current_user.first_name.upcase %></a>
     <% else %>
   <li class="dropdown">
     <a class="active">ACCOUNT</a>
