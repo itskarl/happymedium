@@ -41,7 +41,10 @@ class UsersController < ApplicationController
   end
 
   def destroy
+
+    @user = User.find(params[:id])
     @user.destroy
+    
     respond_to do |format|
       format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
     end
@@ -53,6 +56,6 @@ class UsersController < ApplicationController
     end
 
     def user_params
-       params.require(:user).permit(:first_name, :last_name, :email, :username, :password, :password_digest)
-     end
+      params.require(:user).permit(:first_name, :last_name, :email, :username, :password, :password_digest)
+    end
 end
