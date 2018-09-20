@@ -97,17 +97,17 @@
     <li><a href="<%= user_path(current_user.id) %>"><i class="fas fa-user-circle"></i>&nbsp<%= current_user.first_name %></a>
     <% else %>
   <li class="dropdown">
-    <a class="active">Account</a>
+    <a class="active">ACCOUNT</a>
       <div class="dropdown-content">
-          <a onclick="document.getElementById('login').style.display='block'">Log in</a>
-          <a onclick="document.getElementById('signin').style.display='block'">Sign Up</a>
+          <a onclick="document.getElementById('login').style.display='block'">LOG IN</a>
+          <a onclick="document.getElementById('signin').style.display='block'">SIGN UP</a>
       </div>
   </li>
     <% end %>
-  <li><a href="<%= root_path %> ">Plan My Nite</a></li>
-  <li><a href="/charges/new">Concierge</a></li>
-  <li><a href="/meetup">Meetup</a></li>
-  <li style="float:right; cursor:pointer"><a onclick="document.getElementById('advancesearch').style.display='block'">Advance Search</a></li>
+  <li><a href="<%= root_path %> ">PLAN MY NIGHT</a></li>
+  <li><a href="/charges/new">CONCIERGE</a></li>
+  <li><a href="/meetup">MEETUP</a></li>
+  <li style="float:right; cursor:pointer"><a onclick="document.getElementById('advancesearch').style.display='block'">ADVANCED SEARCH</a></li>
   <li style="float:right">
     <%= form_tag(root_path, method: :get) do %>
     <div class="searchbar">
@@ -249,6 +249,7 @@
     </div>
   <% end %>
   </div>
+
 </div>
 
 

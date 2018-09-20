@@ -43,9 +43,9 @@ class ApplicationController < ActionController::Base
       end
     #---------
       if params[:filter].nil?
-        filter = ''
+        p filter = ''
       else
-        filter = params[:filter]
+        p filter = params[:filter]
       end
 
        if params[:cost].nil?
