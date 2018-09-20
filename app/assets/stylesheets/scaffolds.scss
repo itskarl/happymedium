@@ -1,3 +1,4 @@
+
 body {
   background-color: rgb(49, 49, 49);
   color: rgba(255, 255, 255, 0.884);
@@ -36,7 +37,7 @@ body {
 
 .centered {
   margin: 0;
-  border: 4px inset rgba(222, 222, 222, 0.5);
+  border: 1px solid rgba(222, 222, 222, 0.5);
   padding-top: 5%;
   position: absolute;
   top: 50%;
@@ -120,7 +121,7 @@ li.dropdown {
 .dropdown-content {
   display: none;
   position: absolute;
-  border-left: 2px solid rgb(248, 249, 250);
+  border-left: 1px solid rgb(248, 249, 250);
   z-index: 1;
 }
 

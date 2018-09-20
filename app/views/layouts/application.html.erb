@@ -6,7 +6,7 @@
     <%= csp_meta_tag %>
     <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
     <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
-
+    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretty-checkbox@3.0/dist/pretty-checkbox.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -123,6 +123,8 @@
     </ul>
 
 
+
+
         <%= yield %>
 
 
@@ -185,24 +187,71 @@
   <span onclick="document.getElementById('advancesearch').style.display='none'" class="close" title="Close Modal">&times;</span>
   <%= form_tag(root_path, method: :get, class: 'modal-content' ) do %>
 
-    <div class="container">
 
-        <p><%= label_tag('cost[]', " $") %>
-    <%= check_box_tag('cost[]', "1",{multiple: true})%></p>
-        <p><%= label_tag(:cost, " $$") %>
-    <%= check_box_tag('cost[]', "2", {multiple: true})%></p>
-        <p><%= label_tag(:cost, " $$$") %>
-    <%= check_box_tag('cost[]', "3", {multiple: true})%></p>
-        <p><%= label_tag(:filter, "Hot and new Places") %>
-    <%= check_box_tag('filter[]', "hot_and_new", {multiple: true})%></p>
-        <p><%= label_tag(:filter, "Reservations") %>
-    <%= check_box_tag('filter[]', "reservations", {multiple:true})%></p>
-    <%= label_tag(:miles_away, "Distance from current location") %>
-        <p><%= select_tag(:miles_away, options_for_select([['25',24],['10',10],['5',5]])) %></p>
+    <div class="section container">
+      <div class="row">
+        <div class="pretty p-default">
+            <%= check_box_tag('cost1', "1", {multiple: true})%>
+            <div class="state p-warning">
+                <%= label_tag(:cost, "$") %>
+            </div>
+        </div>
+
+        <div class="pretty p-default">
+            <%= check_box_tag('cost2', "2", {multiple: true})%>
+            <div class="state p-warning">
+                <%= label_tag(:cost, "$$") %>
+            </div>
+        </div>
+
     <%= select_tag(:day, options_for_select([['Today',0],['Tomorrow', 8],[ @day3,16],[@day4,24],[@day5,32]]))%>
     <%= label_tag(:location, "Please enter a city") %>
     <%= text_field_tag :location, request.location.city%>
 
+
+        <div class="pretty p-default">
+            <%= check_box_tag('cost3', "3", {multiple: true})%>
+            <div class="state p-warning">
+                <%= label_tag(:cost, "$$$") %>
+            </div>
+        </div>
+      </div>
+
+<br>
+<br>
+
+      <div class="row">
+        <div class="pretty p-default">
+            <%= check_box_tag('filter1', "hot_and_new", {multiple: true})%>
+            <div class="state p-warning">
+                <%= label_tag(:filter, "Hot and new Places") %>
+            </div>
+        </div>
+
+        <div class="pretty p-default">
+            <%= check_box_tag('filter2', "reservations", {multiple:true})%>
+            <div class="state p-warning">
+                <%= label_tag(:filter, "Reservations") %>
+            </div>
+        </div>
+
+<br>
+<br>
+<br>
+
+      <div class="row">
+      <div class="">
+        <%= label_tag(:miles_away, "Distance from current location") %>
+        <div class="">
+        <%= select_tag(:miles_away, options_for_select([[25,25],[10,10],[5,5]])) %>
+        </div>
+    </div>
+        
+        
+
+
+    
+    </div>
       <div class="clearfix section">
         <%= submit_tag 'filter'%>
         <button type="button" onclick="document.getElementById('advancesearch').style.display='none'" class="cancelbtn">Cancel</button>
@@ -213,5 +262,8 @@
 </div>
 
 
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.16/js/uikit.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.16/js/uikit-icons.min.js"></script>
   </body>
 </html>
