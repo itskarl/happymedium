@@ -16,12 +16,14 @@
 
  /* RGB */
 
- :root {
+@import '~pretty-checkbox/src/pretty-checkbox.scss';
+
+:root {
 font-weight: 400;
- }
+}
 
 h1, h2, h3, h4, h5, p, a {
-  font-family: 'Rajdhani', sans-serif;
+    font-family: 'Rajdhani', sans-serif;
 }
 .fullscreen-bg {
     position: fixed;
@@ -31,7 +33,6 @@ h1, h2, h3, h4, h5, p, a {
     left: 0;
     overflow: hidden;
     z-index: -100;
-
 }
 
 .fullscreen-bg__video {
@@ -83,6 +84,19 @@ transform: translate(-50%,-50%);
     color: white;
 }
 
+.box {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-content: center;
+}
+
+.item {
+    text-align: center;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
     color: rgba(255, 255, 255, 0.59) ;
     opacity: 1; /* Firefox */
@@ -129,7 +143,7 @@ button:hover {
 img {
     width: 100%;
     height: 40vh;
-    border: 4px inset rgba(222, 222, 222, 0.5);
+    border: 1px solid rgba(222, 222, 222, 0.5);
     object-fit: cover
 }
 
@@ -159,10 +173,10 @@ img.avatar {
 }
 
 .modal-content {
-    background-color: #7e7e7ef2;
+    background-color: #8e729ef2;
     margin: 5% auto 15% auto;
     width: 60%;
-    box-shadow: 0px 0px 20px 17px #7e7e7ef2;
+    box-shadow: 0px 0px 20px 17px #8e729ef2;
     z-index: auto;
 }
 

@@ -69,7 +69,7 @@
               <div class="centered">
               <p>Event: <%= @event_name %></p>
               <p>Description: <%= @event_desc %>
-              &nbsp;...<a href="<%= @event_url %>">more</a></p>
+              &nbsp;...<a href="<%= @event_url %>" target="_blank">more</a></p>
               <p>Time Start: <%= @event_start %> </p>
               <p>Time End: <%= @event_end %> </p>
               <p>Price is Free?: <%= @event_free %></p>
@@ -86,9 +86,10 @@
     </div>
   </div>
 
-    
-      <%= i.text_field :name, value: "", placeholder: 'Itinerary Name' %>
+    <br>
+    <br>
+    <br>
+      <p> Create New Itinerary: <br> <%= i.text_field :name, value: "", placeholder: 'Itinerary Name' %> </p>
       <br>
-      <%= i.submit "Create", class: "button-primary" %> 
     <% end %>
     </div>

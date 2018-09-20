@@ -7,7 +7,6 @@
     <% @user.itineraries.each do |itinerary| %>
     <div>
       <p><%= link_to "#{itinerary.name}", itinerary %></p>
-      <p> Events count: <%= itinerary.events.count %> </p>
     </div>
     <% end %>
 </div>
