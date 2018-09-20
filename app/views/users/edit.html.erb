@@ -1,6 +1,8 @@
-<h1>Editing User</h1>
 
-<%= render 'form', user: @user %>
-
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
+<div class="section edit-form">
+    <div class="container">
+    <h3 class="section-heading">Edit Profile</h3>
+    <p class="section-description"><%= render 'form', user: @user %></p>
+    <p class="section-description"><%= link_to 'Back', @user %> | <%= link_to 'Delete Account', users_path %></p>
+    </div>
+</div>

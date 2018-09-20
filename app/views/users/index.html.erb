@@ -1,12 +1,17 @@
-<p id="notice"><%= notice %></p>
 
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= link_to 'My Profile', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Delete Account', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="section edit-form">
+    <div class="container">
+      <h5 class="section-heading">How may we serve you?</h5>
+    <p id="notice"><%= notice %></p>
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= link_to 'My Profile', user %></td> |
+            <td><%= link_to 'Edit My Profile', edit_user_path(user) %></td> |
+            <td><%= link_to 'Delete Account', user, method: :delete, data: { confirm: 'We will miss you!!' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    </div>
+  </div>
