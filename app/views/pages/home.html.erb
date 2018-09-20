@@ -31,28 +31,20 @@
             <div class="event_text">
               <%=image_tag "#{@loc_one_img}"%>
               <div class="centered">
+
               <p><strong class="event-name"><%=@loc_one%></strong><br>
               <%=@address_one%><br>
               Price: <%=@loc_one_price%><br>
-
               Distance: <%=@loc_one_distance%></p>
-
-
             <!-- <p>Distance: <%=@loc_one_distance%> miles</p> -->
-
-
-
               <%= i.fields_for :events  do |f| %>
                 <%= f.hidden_field :name, value: @loc_one %>
                 <%= f.hidden_field :address, value: @address_one %>
                 <%= f.hidden_field :image_url, value: @loc_one_img %>
-
               <% end %>
-
               </div>
             </div>
           </div>
-
 
           <div class="four columns category">
             <div class="event_text">
@@ -70,9 +62,7 @@
                 <%= f.hidden_field :name, value: @loc_two %>
                 <%= f.hidden_field :address, value: @address_two %>
                 <%= f.hidden_field :image_url, value: @loc_two_img %>
-
               <% end %>
-
               </div>
             </div>
           </div>
@@ -80,9 +70,6 @@
 
           <div class="four columns category">
             <div class="event_text">
-
-
-
               <%=image_tag "#{@event_img}"%>
               <div class="centered">
               <p><strong class="event-name">Event: <%= @event_name %></strong><br>
@@ -94,13 +81,10 @@
                 <%= i.fields_for :events do |f| %>
                   <%= f.hidden_field :name, value: @event_name %>
                   <%= f.hidden_field :image_url, value: @event_img %>
-
               <% end %>
 
             </div>
           </div>
-
-
     </div>
   </div>
 
@@ -110,6 +94,6 @@
     <br>
       <p> Create New Itinerary: <br> <%= i.text_field :name, value: "", placeholder: 'Itinerary Name' %> </p>
       <br>
-
+</div>
     <% end %>
     </div>
