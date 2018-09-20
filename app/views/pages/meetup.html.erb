@@ -9,7 +9,7 @@
         <br>
         <%= form_tag('/meetup', controller: 'pages', action: 'meetup') do %>
         ADDRESS ONE:&nbsp;&nbsp;
-        <%= text_field_tag :address1, request.location.city %><br>
+        <%= text_field_tag :address1 %><br>
         ADDRESS TWO:&nbsp;&nbsp;
         <%= text_field_tag :address2 %>
       </span>
@@ -67,7 +67,7 @@
 <% if @meet_data && @meet_data != nil %>
 
   <div class="meetup-selects">
-  
+
     <h4><%= @middlelocation['name'].upcase %></h4>
       <div class="meetup-select-one">
         <div>
