@@ -6,6 +6,7 @@
 <div class="title-text">
   <h1 class="section heading">GET YOUR PERFECT NIGHT</h1>
   <p class="section description">Sit back and let us "sort" your night out for you.</p>
+
 </div>
 <div class="weather-section">
   <div>
@@ -20,10 +21,17 @@
 </div>
 </center>
 <!-- THIS IS HEADER -->
-
-
+<center>
+  <hr style="width: 80%; opacity: 0.5">
+</center>
 <div class="section">
     <%= form_for( @itinerary ) do |i| %>
+    <center>
+
+<div class="save-itin">
+<p> SAVE THIS ITINERARY: <%= i.text_field :name, value: "", placeholder: 'Itinerary Name' %> </p>
+</div>
+</center>
 
   <div class="container main-content">
         <div class="row">
@@ -86,8 +94,8 @@
               <%=image_tag "#{@event_img}"%>
               <div class="centered">
               <p><strong class="event-name">Event: <%= @event_name %></strong><br>
-              Description: <%= @event_desc %>
-              &nbsp;...<a href="<%= @event_url %>" target="_blank">more</a><br>
+              <!-- Description: <%= @event_desc %> -->
+              <a href="<%= @event_url %>" target="_blank">MORE INFO</a><br>
               Start: <%= @event_start %><br>
               End: <%= @event_end %><br>
               Free?: <%= @event_free %></p>
@@ -104,11 +112,8 @@
     </div>
   </div>
 
-    <br>
-    <br>
-    <br>
-    <br>
-      <p> Create New Itinerary: <br> <%= i.text_field :name, value: "", placeholder: 'Itinerary Name' %> </p>
+
+
       <br>
 
     <% end %>
