@@ -144,7 +144,7 @@ class ApplicationController < ActionController::Base
     @weather_response = Curl::Easy.perform("api.openweathermap.org/data/2.5/forecast?q=#{weather_city},#{weather_country}&APPID=89e45d236787c5dece4d491bbac3120b")
     @weather_data = JSON.parse(@weather_response.body_str)
     @weather_description = @weather_data['list'][day]['weather'][0]['description']
-    @weather_time = (Time.parse(@weather_data['list'][day]['dt_txt'])).strftime('%m/%d/%C')
+    @weather_time = (Time.parse(@weather_data['list'][day]['dt_txt'])).strftime('%m/%d/%y')
     @weather_temp = (((@weather_data['list'][day]['main']['temp'] *9) /5).to_i - 459.67).round(0)
     weather_icon_url = @weather_data['list'][day]['weather'][0]['icon']
     @weather_icon = "http://openweathermap.org/img/w/#{weather_icon_url}.png"
