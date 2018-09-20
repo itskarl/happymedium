@@ -215,6 +215,9 @@ img.avatar {
   text-align: left;
 }
 
+.title-text h1 {
+  text-align: left;
+}
 .weather-section {
   display: flex;
   align-items: center;
@@ -226,6 +229,7 @@ img.avatar {
 
 .description {
   margin: 0;
+  text-align: left;
 }
 
 .heading {

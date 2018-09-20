@@ -1,104 +1,144 @@
-
-
 <!-- THIS IS HEADER -->
 <center>
-<div class="headline">
-<div class="title-text">
-  <h1 class="section heading">GET YOUR PERFECT NIGHT</h1>
-  <p class="section description">Sit back and let us "sort" your night out for you.</p>
 
-</div>
-<div class="weather-section">
-  <div>
-  <img src="<%=@weather_icon%>" alt="">
-</div>
-<div>
-  <strong><%=@weather_temp%> F</strong> <br>
-  <p><%=@weather_description%> <br>
-  <%=@weather_time%></p>
-</div>
-</div>
-</div>
-</center>
-<!-- THIS IS HEADER -->
-<center>
-  <hr style="width: 80%; opacity: 0.5">
-</center>
-<div class="section">
-    <%= form_for( @itinerary ) do |i| %>
-    <center>
+  <div class="headline">
 
-<div class="save-itin">
-<p> SAVE THIS ITINERARY: <%= i.text_field :name, value: "", placeholder: 'Itinerary Name' %> </p>
-</div>
-</center>
-
-  <div class="container main-content">
-        <div class="row">
-          <div class="four columns category">
-            <div class="event_text">
-              <%=image_tag "#{@loc_one_img}"%>
-              <div class="centered">
-
-              <p><strong class="event-name"><%=@loc_one%></strong><br>
-              <%=@address_one%><br>
-              Price: <%=@loc_one_price%><br>
-              Distance: <%=@loc_one_distance%></p>
-            <!-- <p>Distance: <%=@loc_one_distance%> miles</p> -->
-              <%= i.fields_for :events  do |f| %>
-                <%= f.hidden_field :name, value: @loc_one %>
-                <%= f.hidden_field :address, value: @address_one %>
-                <%= f.hidden_field :image_url, value: @loc_one_img %>
-              <% end %>
-              </div>
-            </div>
-          </div>
-
-          <div class="four columns category">
-            <div class="event_text">
-              <%=image_tag "#{@loc_two_img}"%>
-              <div class="centered">
+    <div class="title-left">
+      <div class="logosquare">
+        <img src="/logo.png">
+      </div>
+      <div class="title-text">
+        <div>
+          <h1 class="section heading">GET YOUR PERFECT NIGHT</h1>
+          <p class="section description">Sit back and let us "sort" your night out for you.</p>
+        </div>
+      </div>
+    </div>
 
 
-          <p><strong class="event-name"><%=@loc_two%></strong><br>
-            <%=@address_two%><br>
-            Price: <%=@loc_two_price%><br>
-            Distance: <%=@loc_two_distance%> miles</p>
-
-
-              <%= i.fields_for :events do |f| %>
-                <%= f.hidden_field :name, value: @loc_two %>
-                <%= f.hidden_field :address, value: @address_two %>
-                <%= f.hidden_field :image_url, value: @loc_two_img %>
-              <% end %>
-              </div>
-            </div>
-          </div>
-
-
-          <div class="four columns category">
-            <div class="event_text">
-              <%=image_tag "#{@event_img}"%>
-              <div class="centered">
-              <p><strong class="event-name">Event: <%= @event_name %></strong><br>
-              <!-- Description: <%= @event_desc %> -->
-              <a href="<%= @event_url %>" target="_blank">MORE INFO</a><br>
-              Start: <%= @event_start %><br>
-              End: <%= @event_end %><br>
-              Free?: <%= @event_free %></p>
-                <%= i.fields_for :events do |f| %>
-                  <%= f.hidden_field :name, value: @event_name %>
-                  <%= f.hidden_field :image_url, value: @event_img %>
-              <% end %>
-
-            </div>
-          </div>
+    <div class="weather-section">
+      <div>
+        <img src="<%=@weather_icon%>" alt="">
+      </div>
+      <div>
+        <strong><%=@weather_temp%>
+          F</strong>
+        <br>
+        <p><%=@weather_description%>
+          <br>
+          <%=@weather_time%></p>
+      </div>
     </div>
   </div>
 
+
+</center>
+<!-- THIS IS HEADER -->
+<center>
+
+</center>
+<div class="section">
+  <%= form_for( @itinerary ) do |i| %>
+  <center>
+
+    <div class="save-itin">
+      <p>
+        SAVE THIS ITINERARY:
+        <%= i.text_field :name, value: "", placeholder: 'Itinerary Name' %>
+      </p>
+    </div>
+  </center>
+
+  <div class="container main-content">
+
+    <div class="row">
+      <div class="four columns category">
+        <div class="event_text">
+          <%=image_tag "#{@loc_one_img}"%>
+          <div class="centered">
+            <p>
+              <strong class="event-name"><%=@loc_one%></strong><br>
+              <%=@address_one%><br>
+              Price:
+              <%=@loc_one_price%><br>
+
+              Distance:
+              <%=@loc_one_distance%></p>
+
+            <!-- <p>Distance: <%=@loc_one_distance%> miles</p> -->
+
+            <%= i.fields_for :events do |f| %>
+            <%= f.hidden_field :name, value: @loc_one %>
+            <%= f.hidden_field :address, value: @address_one %>
+            <%= f.hidden_field :image_url, value: @loc_one_img %>
+
+          <% end %>
+
+        </div>
+      </div>
+    </div>
+
+
+    <div class="four columns category">
+      <div class="event_text">
+        <%=image_tag "#{@loc_two_img}"%>
+        <div class="centered">
+
+          <p>
+            <strong class="event-name"><%=@loc_two%></strong><br>
+            <%=@address_two%><br>
+
+            Price:
+            <%=@loc_two_price%><br>
+            Distance:
+            <%=@loc_two_distance%>
+            miles</p>
+
+          <%= i.fields_for :events do |f| %>
+          <%= f.hidden_field :name, value: @loc_two %>
+          <%= f.hidden_field :address, value: @address_two %>
+          <%= f.hidden_field :image_url, value: @loc_two_img %>
+
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="four columns category">
+    <div class="event_text">
+
+      <%=image_tag "#{@event_img}"%>
+      <div class="centered">
+        <p>
+          <strong class="event-name">Event:
+            <%= @event_name %></strong><br>
+          <!-- Description: <%= @event_desc %> -->
+          <a href="<%= @event_url %>" target="_blank">MORE INFO</a><br>
+          Start:
+          <%= @event_start %><br>
+          End:
+          <%= @event_end %><br>
+          Free?:
+          <%= @event_free %></p>
+        <%= i.fields_for :events do |f| %>
+        <%= f.hidden_field :name, value: @event_name %>
+        <%= f.hidden_field :image_url, value: @event_img %>
+
+      <% end %>
+
+
+    </div>
+  </div>
+
+</div>
+</div>
+
+<br>
 
 
       <br>
 </div>
     <% end %>
     </div>
+
