@@ -2,10 +2,10 @@
 
 <div class="section edit-form">
     <div class="container">
-      <h3 class="section-heading"><%=  @user.first_name %>'s Itineraries</h3>
+      <h3 class="section-heading"><%=  @user.first_name.upcase %>'S ITINERARIES</h3>
 
       <% @user.itineraries.each do |itinerary| %>
-      <h4 class="section-description"><%= link_to "#{itinerary.name}", itinerary %></h4>
+      <h4 class="section-description"><%= link_to "#{itinerary.name.upcase}", itinerary %></h4>
       <% end %>
 
     </div>
