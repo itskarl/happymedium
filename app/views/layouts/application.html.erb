@@ -184,83 +184,6 @@
     </div>
 
 <div id="advancesearch" class="modal">
-<<<<<<< HEAD
-  <span onclick="document.getElementById('advancesearch').style.display='none'" class="close" title="Close Modal">&times;</span>
-  <%= form_tag(root_path, method: :get, class: 'modal-content' ) do %>
-
-
-    <div class="section container">
-      <div class="row">
-        <div class="pretty p-default">
-            <%= check_box_tag('cost[]', "1", {multiple: true})%>
-            <div class="state p-warning">
-                <%= label_tag(:cost, "$") %>
-            </div>
-        </div>
-
-        <div class="pretty p-default">
-            <%= check_box_tag('cost[]', "2", {multiple: true})%>
-            <div class="state p-warning">
-                <%= label_tag(:cost, "$$") %>
-            </div>
-        </div>
-
-    <%= select_tag(:day, options_for_select([['Today',0],['Tomorrow', 8],[ @day3,16],[@day4,24],[@day5,32]]))%>
-    <%= label_tag(:location, "Please enter a city") %>
-    <%= text_field_tag :location, request.location.city%>
-
-
-        <div class="pretty p-default">
-            <%= check_box_tag('cost[]', "3", {multiple: true})%>
-            <div class="state p-warning">
-                <%= label_tag(:cost, "$$$") %>
-            </div>
-        </div>
-      </div>
-
-<br>
-<br>
-
-      <div class="row">
-        <div class="pretty p-default">
-            <%= check_box_tag('filter[]', "hot_and_new", {multiple: true})%>
-            <div class="state p-warning">
-                <%= label_tag(:filter, "Hot and new Places") %>
-            </div>
-        </div>
-
-        <div class="pretty p-default">
-            <%= check_box_tag('filter[]', "reservations", {multiple:true})%>
-            <div class="state p-warning">
-                <%= label_tag(:filter, "Reservations") %>
-            </div>
-        </div>
-
-<br>
-<br>
-<br>
-
-      <div class="row">
-      <div class="">
-        <%= label_tag(:miles_away, "Distance from current location") %>
-        <div class="">
-        <%= select_tag(:miles_away, options_for_select([[25,25],[10,10],[5,5]])) %>
-        </div>
-    </div>
-
-
-
-
-
-    </div>
-      <div class="clearfix section">
-        <%= submit_tag 'filter'%>
-        <button type="button" onclick="document.getElementById('advancesearch').style.display='none'" class="cancelbtn">Cancel</button>
-      </div>
-    <% end %>
-    </div>
-  </form>
-=======
  <span onclick="document.getElementById('advancesearch').style.display='none'" class="close" title="Close Modal">&times;</span>
  <%= form_tag(root_path, method: :get, class: 'modal-content' ) do %>
 
@@ -289,7 +212,7 @@
    <% end %>
    </div>
  </form>
->>>>>>> 8af397ea61298598e8513cf57626352f258a28d2
+
 </div>
 
 
