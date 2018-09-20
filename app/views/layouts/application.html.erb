@@ -184,6 +184,7 @@
     </div>
 
 <div id="advancesearch" class="modal">
+<<<<<<< HEAD
   <span onclick="document.getElementById('advancesearch').style.display='none'" class="close" title="Close Modal">&times;</span>
   <%= form_tag(root_path, method: :get, class: 'modal-content' ) do %>
 
@@ -259,6 +260,36 @@
     <% end %>
     </div>
   </form>
+=======
+ <span onclick="document.getElementById('advancesearch').style.display='none'" class="close" title="Close Modal">&times;</span>
+ <%= form_tag(root_path, method: :get, class: 'modal-content' ) do %>
+
+   <div class="container">
+
+       <p><%= label_tag('cost[]', " $") %>
+   <%= check_box_tag('cost[]', "1",{multiple: true})%></p>
+       <p><%= label_tag(:cost, " $$") %>
+   <%= check_box_tag('cost[]', "2", {multiple: true})%></p>
+       <p><%= label_tag(:cost, " $$$") %>
+   <%= check_box_tag('cost[]', "3", {multiple: true})%></p>
+       <p><%= label_tag(:filter, "Hot and new Places") %>
+   <%= check_box_tag('filter[]', "hot_and_new", {multiple: true})%></p>
+       <p><%= label_tag(:filter, "Reservations") %>
+   <%= check_box_tag('filter[]', "reservations", {multiple:true})%></p>
+   <%= label_tag(:miles_away, "Distance from current location") %>
+       <p><%= select_tag(:miles_away, options_for_select([['25',24],['10',10],['5',5]])) %></p>
+   <%= select_tag(:day, options_for_select([['Today',0],['Tomorrow', 8],[ @day3,16],[@day4,24],[@day5,32]]))%>
+   <%= label_tag(:location, "Please enter a city") %>
+   <%= text_field_tag :location, request.location.city%>
+
+     <div class="clearfix section">
+       <%= submit_tag 'filter'%>
+       <button type="button" onclick="document.getElementById('advancesearch').style.display='none'" class="cancelbtn">Cancel</button>
+     </div>
+   <% end %>
+   </div>
+ </form>
+>>>>>>> 8af397ea61298598e8513cf57626352f258a28d2
 </div>
 
 

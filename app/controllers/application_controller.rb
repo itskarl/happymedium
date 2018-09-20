@@ -131,7 +131,7 @@ class ApplicationController < ActionController::Base
     randevent = @req['events'].sample unless @req.nil?
     @event_img = randevent['logo']['url'] if !randevent['logo'].nil?
     @event_name = randevent['name']['text'] if !randevent.nil?
-    @event_desc = randevent['description']['text'].byteslice(0..150) unless randevent['description']['text'].byteslice(0..150).nil?
+    @event_desc = randevent['description']['text'].byteslice(0..50) unless randevent['description']['text'].byteslice(0..50).nil?
     @event_start = (Time.parse(randevent['start']['local'])).strftime('%B, %d %Y %l:%M%P')
     @event_end = (Time.parse(randevent['end']['local'])).strftime('%B, %d %Y %l:%M%P')
     @event_free = randevent['is_free']

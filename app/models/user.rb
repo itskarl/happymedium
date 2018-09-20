@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_many :itineraries
+  has_many :itineraries, dependent: :destroy
   has_secure_password
 
   validates :password, presence: true, length: { maximum: 32, minimum: 3 }

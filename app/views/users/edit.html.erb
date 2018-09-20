@@ -3,6 +3,7 @@
     <div class="container">
     <h3 class="section-heading">Edit Profile</h3>
     <p class="section-description"><%= render 'form', user: @user %></p>
-    <p class="section-description"><%= link_to 'Back', @user %> | <%= link_to 'Delete Account', users_path %></p>
+    <p class="section-description"><%= link_to 'My Profile', @user %> | <%= link_to 'Delete Account!', user_path, method: :delete, data: { confirm: 'We will miss you!!' } %></p>
+
     </div>
 </div>
