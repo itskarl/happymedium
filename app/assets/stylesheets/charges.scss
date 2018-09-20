@@ -43,8 +43,8 @@
 .amount span {
   color: rgba(0, 0, 0, .7);
   color: rgba(1, 223, 0, 0.9);
-    font-size: 30px;
-    text-shadow: 0 0 5px rgba(0, 0, 0, .6);
+  font-size: 30px;
+  text-shadow: 0 0 5px rgba(0, 0, 0, .6);
 }
 
 .no-display {
@@ -69,7 +69,7 @@
   background-color: rgb(145, 227, 141);
   border-radius: 10px;
   border: none;
-  color: rgb(0, 0, 0)
+  color: rgb(0, 0, 0);
 }
 
 .buy-option input[type=submit]:hover {
