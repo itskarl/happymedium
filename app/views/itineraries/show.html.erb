@@ -1,5 +1,5 @@
   <h1 class="section heading"><%= @itinerary.name %></h1>
-  <p class="section description">Make it a night to remember</p>
+  <p class="section description" style="text-align: center;">Make it a night to remember</p>
 
       <% @events.reverse.each do |e| %>
   <div class="section categories">
@@ -20,7 +20,7 @@
 
   <h1 class="section heading">Last minute adds</h1>
 
-<div class="container">
+<div class="container add-more-itin">
     <div class="row">
         <div class="four columns category">
           <div class="event_text">
@@ -66,9 +66,8 @@
             <%=image_tag "#{@event_img}"%>
             <div class="centered">
             <p><%= @event_name %></p>
-            <p><%= @event_desc %></p>
-            <p><%= @event_start %></p>
-            <p><%= @event_end %></p>
+            <p><%= @event_start %><br>
+            <%= @event_end %><br></p>
             <%= form_for( :event, :html => { :role => "form" }, url: events_path ) do |f| %>
               <%= f.hidden_field :name, value: @event_name %>
               <%= f.hidden_field :image_url, value: @event_img %>
@@ -78,3 +77,5 @@
           </div>
         </div>
       </div>
+</div>
+</div>
