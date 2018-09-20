@@ -19,7 +19,6 @@
 var modal = document.getElementById('login');
 var modal = document.getElementById('signin');
 var modal = document.getElementById('advancesearch');
-var modal = document.getElementById('concierge');
 
 window.onclick = function (event) {
     if (event.target == modal) {
