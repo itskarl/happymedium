@@ -71,7 +71,7 @@ class ApplicationController < ActionController::Base
 
 
 
-
+#----location search
     p cost.count
 
     if params[:location].nil?
@@ -80,9 +80,9 @@ class ApplicationController < ActionController::Base
     else
       p destination = params[:location].gsub(/\W/, '-')
     end
-
+#------
     # TODO: just revert location back to #{destination} later on
-
+#-----Yelp API---
     if cost.count > 1
       @response = RestClient::Request.execute(
         method: :get,
@@ -100,8 +100,8 @@ class ApplicationController < ActionController::Base
         headers: { 'Authorization' => 'Bearer N8S3U6LDLLsusNB1-x8lUUwT6VzK8Vrz_jVDrcHKceg6GdJl7--ETsNeFQ1VBFG39Vy_aPd3NuKSBXln5XdH43hbescROWi4NKTPok0KEkxDXsisrsdU7kOJ-KaaW3Yx' }
       )
     end
-
-
+#------
+#---Event Brite API
     @data = JSON.parse(@response)
     @locationOne = @data.first[1][rand(0...@data.first[1].count)]
     @locationTwo = @data.first[1][rand(0...@data.first[1].count)]
@@ -138,7 +138,7 @@ class ApplicationController < ActionController::Base
     @event_url = randevent['url']
 
 
-    #weather-------
+    #weather API-------
     weather_city = @locationOne['location']['city'].gsub(/\W/, '+') unless @locationOne.nil?
     weather_country = @locationOne['location']['country'].gsub(/\W/, '-') unless @locationOne.nil?
     @weather_response = Curl::Easy.perform("api.openweathermap.org/data/2.5/forecast?q=#{weather_city},#{weather_country}&APPID=89e45d236787c5dece4d491bbac3120b")
