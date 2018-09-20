@@ -146,7 +146,9 @@ class ApplicationController < ActionController::Base
     @weather_description = @weather_data['list'][day]['weather'][0]['description']
     @weather_time = (Time.parse(@weather_data['list'][day]['dt_txt'])).strftime('%m/%d/%C')
     @weather_temp = (((@weather_data['list'][day]['main']['temp'] *9) /5).to_i - 459.67).round(0)
-    p @weather_data['list'][day]['main']['temp']/9
+    weather_icon_url = @weather_data['list'][day]['weather'][0]['icon']
+    @weather_icon = "http://openweathermap.org/img/w #{weather_icon_url}.png"
+
 
 
   end
