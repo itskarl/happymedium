@@ -87,7 +87,7 @@ class ApplicationController < ActionController::Base
       @response = RestClient::Request.execute(
         method: :get,
 
-        url: "https://api.yelp.com/v3/businesses/search?term=#{query}&location=#{destination}&open_now=true&limit=5&price=#{cost[0]},#{cost[1]}&#{filter[0]},#{filter[1]},#{filter[2]}&radius=#{loc_miles.to_i}",
+        url: "https://api.yelp.com/v3/businesses/search?term=#{query}&location=#{destination}&open_now=true&limit=50&price=#{cost[0]},#{cost[1]}&#{filter[0]},#{filter[1]},#{filter[2]}&radius=#{loc_miles.to_i}",
 
         headers: { 'Authorization' => 'Bearer N8S3U6LDLLsusNB1-x8lUUwT6VzK8Vrz_jVDrcHKceg6GdJl7--ETsNeFQ1VBFG39Vy_aPd3NuKSBXln5XdH43hbescROWi4NKTPok0KEkxDXsisrsdU7kOJ-KaaW3Yx' }
       )
@@ -129,7 +129,7 @@ class ApplicationController < ActionController::Base
 
     @req = JSON.parse(@datae.body_str)
     randevent = @req['events'].sample unless @req.nil?
-    @event_img = randevent['logo']['url'] if !randevent['logo'].nil?
+    @event_img = randevent['logo']['url'] if !randevent['logo'].nil? 
     @event_name = randevent['name']['text'] if !randevent.nil?
     @event_desc = randevent['description']['text'].byteslice(0..50) unless randevent['description']['text'].byteslice(0..50).nil?
     @event_start = (Time.parse(randevent['start']['local'])).strftime('%B, %d %Y %l:%M%P')
