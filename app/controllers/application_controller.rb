@@ -74,10 +74,11 @@ class ApplicationController < ActionController::Base
 
     p cost.count
 
-    if params[:location].nil? || params[:location] = ' '
+    if params[:location].nil?
       destination = 'new+york'
+      p params[:location]
     else
-      destination = params[:location].gsub(/\W/, '-')
+      p destination = params[:location].gsub(/\W/, '-')
     end
 
     # TODO: just revert location back to #{destination} later on
@@ -121,7 +122,7 @@ class ApplicationController < ActionController::Base
     @data.first[1].count
 
 
-    event_brite_loc = @locationOne['location']['state'].gsub(/\W/, '-') unless @locationOne.nil?
+    event_brite_loc = @locationOne['location']['city'].gsub(/\W/, '-') unless @locationOne.nil?
     p event_brite_loc
     @datae = Curl::Easy.perform("https://www.eventbriteapi.com/v3/events/search/?q=#{query}&sort_by=best&location.address=#{event_brite_loc}&price=#{event_cost}&start_date.range_start=#{event_day}&start_date.range_end=#{sec_event_day}&token=FGTPMLNV7K6MQVZZCC6S")
     p @datae
@@ -138,12 +139,14 @@ class ApplicationController < ActionController::Base
 
 
     #weather-------
-    @weather_response = Curl::Easy.perform("api.openweathermap.org/data/2.5/forecast?lat=40.707984&lon=-74.006486&APPID=89e45d236787c5dece4d491bbac3120b")
+    weather_city = @locationOne['location']['city'].gsub(/\W/, '+') unless @locationOne.nil?
+    weather_country = @locationOne['location']['country'].gsub(/\W/, '-') unless @locationOne.nil?
+    @weather_response = Curl::Easy.perform("api.openweathermap.org/data/2.5/forecast?q=#{weather_city},#{weather_country}&APPID=89e45d236787c5dece4d491bbac3120b")
     @weather_data = JSON.parse(@weather_response.body_str)
     @weather_description = @weather_data['list'][day]['weather'][0]['description']
-    @weather_time = (Time.parse(@weather_data['list'][day]['dt_txt'])).strftime('%m/%d/%C %I:%M%p')
-
-    # @weather_temp =
+    @weather_time = (Time.parse(@weather_data['list'][day]['dt_txt'])).strftime('%m/%d/%C')
+    @weather_temp = (((@weather_data['list'][day]['main']['temp'] *9) /5).to_i - 459.67).round(0)
+    p @weather_data['list'][day]['main']['temp']/9
 
 
   end
