@@ -51,10 +51,36 @@ body {
   margin-bottom: -40px;
   justify-content: center;
 }
+.save-itin input[type=text] {
+  background-color:transparent;
+  height: 30px;
+  border-radius: 15px;
+  padding: 0 20px;
+
+}
+
+
 .main-content  {
   width: 90%
 }
 
+.title-left {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.title-left img {
+  width: 70px;
+  height: 70px;
+  border: none;
+}
+
+.logosquare {
+  display:flex;
+  align-items: center;
+  padding:10px;
+}
 .fa-user-circle:before {
   content: "\f2bd";
   font-size: large;
