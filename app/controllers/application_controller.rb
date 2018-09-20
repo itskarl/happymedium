@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
 
     #Searching by Date---
     today = Date.today()
-    p Time.now + 3.days
+    Time.now + 3.days
     @day3 = (today+2).strftime('%m/%d/%C')
     @day4 = (today+3).strftime('%m/%d/%C')
     @day5 = (today+4).strftime('%m/%d/%C')
@@ -23,19 +23,23 @@ class ApplicationController < ActionController::Base
         day = 0
 
         p event_day = Time.now.utc.iso8601
+        p sec_event_day = (Time.now + 1.day).utc.iso8601
       elsif params[:day] == '8'
         day = params[:day].to_i
         p event_day = (Time.now + 1.day).utc.iso8601
-
+        p sec_event_day = (Time.now + 2.day).utc.iso8601
       elsif params[:day] == '16'
         day = params[:day].to_i
         p event_day = (Time.now + 2.days).utc.iso8601
+        p sec_event_day = (Time.now + 3.days).utc.iso8601
       elsif params[:day] == '24'
         day = params[:day].to_i
         p event_day = (Time.now + 3.days).utc.iso8601
+        p sec_event_day = (Time.now + 4.days).utc.iso8601
       elsif params[:day] == '32'
         day = params[:day].to_i
         p event_day = (Time.now + 4.days).utc.iso8601
+        p sec_event_day = (Time.now + 5.days).utc.iso8601
       end
     #---------
       if params[:filter].nil?
@@ -70,11 +74,12 @@ class ApplicationController < ActionController::Base
 
     p cost.count
 
-    destination = if params[:location].nil?
-                    'new+york'
-                  else
-                    params[:location].gsub(/\W/, '-')
-                end
+    if params[:location].nil? || params[:location] = ' '
+      destination = 'new+york'
+    else
+      destination = params[:location].gsub(/\W/, '-')
+    end
+
     # TODO: just revert location back to #{destination} later on
 
     if cost.count > 1
@@ -116,14 +121,15 @@ class ApplicationController < ActionController::Base
     @data.first[1].count
 
 
-    event_brite_loc = @locationOne['location']['city'].gsub(/\W/, '-') unless @locationOne.nil?
-    @datae = Curl::Easy.perform("https://www.eventbriteapi.com/v3/events/search/?q=#{query}&sort_by=best&location.address=#{event_brite_loc}&price=#{event_cost}&start_date.range_start=#{event_day}&start_date.range_end=#{event_day}&token=FGTPMLNV7K6MQVZZCC6S")
-
+    event_brite_loc = @locationOne['location']['state'].gsub(/\W/, '-') unless @locationOne.nil?
+    p event_brite_loc
+    @datae = Curl::Easy.perform("https://www.eventbriteapi.com/v3/events/search/?q=#{query}&sort_by=best&location.address=#{event_brite_loc}&price=#{event_cost}&start_date.range_start=#{event_day}&start_date.range_end=#{sec_event_day}&token=FGTPMLNV7K6MQVZZCC6S")
+    p @datae
 
     @req = JSON.parse(@datae.body_str)
-    randevent = @req['events'].sample
-    @event_img = randevent['logo']['url'] if !randevent['logo']['url'].nil?
-    @event_name = randevent['name']['text']
+    randevent = @req['events'].sample unless @req.nil?
+    @event_img = randevent['logo']['url'] if !randevent['logo'].nil?
+    @event_name = randevent['name']['text'] if !randevent.nil?
     @event_desc = randevent['description']['text'].byteslice(0..150) unless randevent['description']['text'].byteslice(0..150).nil?
     @event_start = (Time.parse(randevent['start']['local'])).strftime('%B, %d %Y %l:%M%P')
     @event_end = (Time.parse(randevent['end']['local'])).strftime('%B, %d %Y %l:%M%P')
