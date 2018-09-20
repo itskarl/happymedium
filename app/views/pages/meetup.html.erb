@@ -67,7 +67,7 @@
 <% if @meet_data && @meet_data != nil %>
 
   <div class="meetup-selects">
-  
+
     <h4><%= @middlelocation['name'].upcase %></h4>
       <div class="meetup-select-one">
         <div>
@@ -82,10 +82,10 @@
           height="200"
           frameborder="0"
           style="border:0"
-          src="https://www.google.com/maps/embed/v1/search?q=<%= @middlelocation['location']['display_address'][0] %><%=@middlelocation['name'].gsub!(/[!@%&"]/,'')%>&key=AIzaSyCNbacb2nTqhHODHvlf5pCt7jYWi93YU6Y"
+          src="https://www.google.com/maps/embed/v1/search?q=<%= @middlelocation['location']['display_address'][0]%>+<%= @middlelocation['name'].gsub!(/[!@%&"]/,'') %>+<%= @middlelocation['location']['display_address'][1] %>&key=AIzaSyCNbacb2nTqhHODHvlf5pCt7jYWi93YU6Y"
           allowfullscreen="allowfullscreen"></iframe>
 
-                <p><%= @middlelocation['location']['display_address'][0] %></p>
+                <p><%= @middlelocation['location']['display_address'][0] + ", "+ @middlelocation['location']['display_address'][1] %></p>
                   <% end %>
         </div>
 
