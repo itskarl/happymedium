@@ -110,16 +110,6 @@ h1, h2, h3, h4, h5, p, a {
     color: rgba(255, 255, 255, 0.59) ;
 }
 
-/* .searchbar input[type=]{
-    background-color: transparent;
-    border-radius: 50px 0px 0px 50px;
-    border-radius: 0px 50px 50px 0px;
-    border-top: 1px solid #E6E8E6;
-    border-left: 1px solid #E6E8E6;
-    border-bottom: 1px solid #E6E8E6;
-    border-right: none;
-} */
-
 
 .fillmodal {
     width: 100%;
@@ -187,7 +177,7 @@ img.avatar {
 }
 
 .animate {
-    animation: animatezoom 0.6s
+    animation: animatezoom 0.6s;
 }
 
 .container {
