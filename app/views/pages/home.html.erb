@@ -1,11 +1,24 @@
 
-  <p><%=@weather_description%></p>
-  <img src="<%=@weather_icon%>" alt="">
-  <p><%=@weather_temp%> fahrenheit</p>
-  <p><%=@weather_time%></p>
 
-  <h1 class="section heading">Find your Happy Medium</h1>
+<!-- THIS IS HEADER -->
+<div class="headline">
+<div class="title-text">
+  <h1 class="section heading">GET YOUR PERFECT NIGHT</h1>
   <p class="section description">Sit back and let us "sort" your night out for you.</p>
+</div>
+<div class="weather-section">
+  <div>
+  <img src="<%=@weather_icon%>" alt="">
+</div>
+<div>
+  <strong><%=@weather_temp%> F</strong> <br>
+  <p><%=@weather_description%> <br>
+  <%=@weather_time%></p>
+</div>
+</div>
+</div>
+<!-- THIS IS HEADER -->
+
 
 <div class="section">
     <%= form_for( @itinerary ) do |i| %>
