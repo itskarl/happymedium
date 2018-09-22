@@ -50,7 +50,9 @@ body {
   margin: 0;
   margin-bottom: -40px;
   justify-content: center;
+  padding: 30px 0;
 }
+
 .save-itin input[type=text] {
   background-color:transparent;
   height: 30px;
@@ -104,6 +106,7 @@ body {
   align-items: center;
   justify-content: center;
   width: 40px;
+  font-size: 12px;
 }
 li a {
   display: block;

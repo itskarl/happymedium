@@ -150,6 +150,9 @@ class ApplicationController < ActionController::Base
     @weather_icon = "http://openweathermap.org/img/w/#{weather_icon_url}.png"
 
 
+  rescue StandardError
+
+  rescue Exception
 
   end
 end
