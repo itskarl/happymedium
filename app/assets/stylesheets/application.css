@@ -335,4 +335,10 @@ li a, .dropbtn {
 .save-itin input[type="submit"] {
     display: none;
 }
+.main-content {
+    width: 95%;
+}
+.row div {
+    margin: 5px 0;
+}
 }
