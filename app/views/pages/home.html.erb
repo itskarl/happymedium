@@ -5,7 +5,7 @@
 
     <div class="title-left">
       <div class="logosquare">
-        <img src="/logo.png">
+        <i class="far fa-moon"></i>
       </div>
       <div class="title-text">
         <div>
@@ -42,10 +42,16 @@
   <center>
 
     <div class="save-itin">
-      <p>
-        SAVE THIS ITINERARY:
-        <%= i.text_field :name, value: "", placeholder: 'Itinerary Name' %>
-      </p>
+      <div class="save-itin-left">
+        <p>SAVE THESE PLANS! &nbsp;</p>
+        <%= i.text_field :name, value: "", placeholder: 'Itinerary Name' %> &nbsp;
+        <%= i.submit "save" %>
+      </div>
+      <div class="save-itin-left">
+        <p>GENERATE ANOTHER! &nbsp;</p>
+        <a href="/"><div><i class="fas fa-random"></i></div></a>
+      </div>
+
     </div>
   </center>
 

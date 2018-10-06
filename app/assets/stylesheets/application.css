@@ -90,6 +90,10 @@ h1, h2, h3, h4, h5, p, a {
     border-left: none;
     margin-top: 6px;
     color: white;
+    height: 25px;
+    width: 120px;
+    margin: 0;
+      margin-top: 10px;
 }
 
 .box {
@@ -140,7 +144,7 @@ button:hover {
 
 img {
     width: 100%;
-    height: 40vh;
+    height: 200px;
     border: 1px solid #f0d0ffde;
     object-fit: cover;
     box-sizing: border-box;
@@ -175,9 +179,23 @@ img.avatar {
     background-color: #8e729ef2;
     margin: 5% auto 15% auto;
     width: 60%;
-    box-shadow: 0px 0px 20px 13px #8e729e8a;
+    box-shadow: 0px 0px 20px rgba(24, 24, 23, 0.76);
     z-index: auto;
     padding: 20px;
+}
+
+.modal-content input {
+  background-color: transparent;
+  border-radius: 15px;
+  color: white;
+}
+
+.modal-content button {
+  border-radius: 15px;
+}
+
+.modal-content button:hover {
+  color: white;
 }
 
 .close {
@@ -195,14 +213,14 @@ img.avatar {
 }
 
 .headline {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 80%;
-  border-style: solid;
-border-color: white;
-border-width: 1px 0 0 0;
-
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    /* border-style: solid;
+    border-color: white;
+    border-width: 1px 0 0 0; */
+    margin-bottom: 20px;
 }
 
 .event-name {
@@ -250,6 +268,7 @@ hr {
     margin: 13px;
 }
 
+
 @media screen and (max-width: 300px) {
     span.psw {
         display: block;
@@ -262,4 +281,58 @@ hr {
     }
 
 
+}
+
+@media only screen and (max-width: 600px) {
+  .title-text h1 {
+      font-size: 20px;
+      color: yellow;
+  }
+  .logosquare {
+      font-size: 0px;
+  }
+  .save-itin {
+    width: 95%;
+  }
+  .save-itin-left p {
+    font-size: 0px;
+    padding-right: 10px;
+}
+  .appbody ul {
+    margin: 5px 10px 0px 10px;
+    font-size: 16px;
+}
+.title-left {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+}
+
+li a, .dropbtn {
+    display: inline-block;
+    color: #E6E8E6;
+    text-align: center;
+    padding: 5px 5px;
+    text-decoration: none;
+}
+.searchbar {
+    margin-top: -10px;
+}
+.concierge {
+  width: 280px;
+  margin: 10px 0;
+}
+.meetup-form {
+  width: 300px
+}
+.meetup-select-one {
+    grid-template-columns: 1fr;
+}
+.meetup-selects {
+  width: 300px;
+}
+.save-itin input[type="submit"] {
+    display: none;
+}
 }
