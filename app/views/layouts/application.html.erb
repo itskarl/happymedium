@@ -11,6 +11,7 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link href="https://fonts.googleapis.com/css?family=Rajdhani" rel="stylesheet">
+    <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <!-- React -->
     <!-- <%= javascript_pack_tag 'index' %> <%= stylesheet_pack_tag 'index'%> -->
@@ -208,7 +209,7 @@
 <div class="section container">
 <div class="row">
 
-  <strong>PRICE</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  PRICE:&nbsp;
 
 <div class="pretty p-default">
   <%= check_box_tag('cost[]', "1",{multiple: true})%>
@@ -238,14 +239,14 @@
 <div class="pretty p-default">
   <%= check_box_tag('filter[]', "hot_and_new", {multiple: true})%>
   <div class="state p-warning">
-    <%= label_tag(:filter, "Hot and new Places") %>
+    <%= label_tag(:filter, "TRENDING PLACES?") %>
   </div>
 </div>
-
+<p></p>
 <div class="pretty p-default">
   <%= check_box_tag('filter[]', "reservations", {multiple:true})%>
   <div class="state p-warning">
-    <%= label_tag(:filter, "Takes Reservations") %>
+    <%= label_tag(:filter, "TAKES RESERVATIONS") %>
   </div>
 </div>
 </div>

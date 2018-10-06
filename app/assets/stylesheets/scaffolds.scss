@@ -46,21 +46,68 @@ body {
 .save-itin {
   width: 87%;
   display: flex;
+  justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  padding-top:20px;
+
+}
+
+.save-itin input {
   margin: 0;
-  margin-bottom: -40px;
+}
+
+.save-itin-left {
+  display: flex;
   justify-content: center;
-  padding: 30px 0;
+  align-items: center;
+  padding: 0;
+}
+
+.save-itin-left p {
+  margin-bottom: 0
+}
+
+.save-itin-left div {
+  background-color:transparent;
+  height: 38px;
+  border-radius: 20px;
+  color: white;
+  border-style: solid;
+  border-color: white;
+  border-width: 1px;
+  box-sizing: border-box;
+  width: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center
 }
 
 .save-itin input[type=text] {
   background-color:transparent;
-  height: 30px;
-  border-radius: 15px;
-  padding: 0 20px;
-
+  height: 38px;
+  border-radius: 20px;
+  color: white;
+      height: 25px;
 }
 
+.save-itin input[type=submit] {
+  background-color:transparent;
+  color: white;
+    border-radius: 20px;
+    line-height: 1em;
+    height: 25px;
+}
+
+.save-itin a {
+  text-decoration: none;
+}
+
+.save-itin a:hover {
+  color: pink;
+  font-size: 20px;
+  transition-duration: .2s
+}
 
 .main-content  {
   width: 90%
@@ -82,6 +129,7 @@ body {
   display:flex;
   align-items: center;
   padding:10px;
+  font-size: 50px;
 }
 .fa-user-circle:before {
   content: "\f2bd";
@@ -95,18 +143,22 @@ body {
 }
 
 .searchicon {
-  margin-top: 6px;
+  margin-top: 10px;
   border-radius: 50px 0px 0px 50px;
   border-top: 1px solid #E6E8E6;
   border-left: 1px solid #E6E8E6;
   border-bottom: 1px solid #E6E8E6;
   border-right: none;
-  height: 36px;
+  height: 23px;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 40px;
-  font-size: 12px;
+  font-size: 8px;
+}
+
+.searchicon i{
+  font-size: 8px;
 }
 li a {
   display: block;
